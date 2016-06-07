@@ -1,5 +1,4 @@
-function hello ({text}) {
-  console.log('log: ' + text)
-}
+import log from './toto.js'
+import moment from 'moment'
 
-hello({text: 'toto'})
+log(moment().format('MMMM Do YYYY, h:mm:ss a'))

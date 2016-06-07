@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "browserify -t babelify src/index.js --outfile static/build.js",
     "min": "uglifyjs index.js -o index.min.js",
     "start": "budo src/index.js:build.js --dir static --host localhost --open --live -- -t babelify"
   },
@@ -17,5 +18,8 @@
     "budo": "^8.3.0",
     "standard": "^7.1.2",
     "uglify-js": "^2.6.2"
+  },
+  "dependencies": {
+    "moment": "^2.13.0"
   }
 }
