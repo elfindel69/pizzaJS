@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "browserify -t babelify src/index.js --outfile static/build.js",
-    "min": "uglifyjs index.js -o index.min.js",
-    "start": "budo src/index.js:build.js --dir static --host localhost --open --live -- -t babelify"
+    "postbuild": "uglifyjs static/build.js -o static/build.js",
+    "start": "budo src/index.js:build.js --dir static --host localhost --open --live -- -t babelify",
+    "postinstall": "npm run build"
   },
   "author": "",
   "license": "ISC",
