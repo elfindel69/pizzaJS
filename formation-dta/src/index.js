@@ -1,4 +1,9 @@
-import log from './toto.js'
-import moment from 'moment'
+import Pizza from './pizza.js'
 
-log(moment().format('MMMM Do YYYY, h:mm:ss a'))
+
+var p = new Pizza('toto')
+console.log(p)
+
+p.setName('titi')
+console.log(p)
+
