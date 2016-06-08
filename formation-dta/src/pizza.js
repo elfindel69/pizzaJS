@@ -1,5 +1,5 @@
 import { toppings as authorizedToppings } from './toppings.js'
-
+import { _ } from 'lodash'
 export class Pizza {
 
   constructor (name, toppings = []) {
@@ -34,6 +34,8 @@ export class Pizza {
   }
 
   displayToppings () {
-    return this
+    let map = _.groupBy(this.toppings)
+    console.log(map)
+    return _.map(map, value => value[0] + ' ' + value.length)
   }
 }
