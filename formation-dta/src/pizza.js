@@ -8,13 +8,17 @@ export class Pizza {
   }
   setName (name) {
     this.name = name
+    return this
   }
 
   addTopping (topping) {
-    if (!this.isLegalTopping(topping)) return
+    if (!this.isLegalTopping(topping)) return this
 
-    if (this.toppings.filter(index => index === topping).length > 1) return
+    if (this.toppings.filter(index => index === topping).length > 1) return this
+
     this.toppings.push(topping)
+
+    return this
   }
 
   isLegalTopping (topping) {
@@ -22,13 +26,14 @@ export class Pizza {
   }
 
   removeTopping (topping) {
-    var index = this.toppings.indexOf(topping)
+    const index = this.toppings.indexOf(topping)
     if (index !== -1) {
       this.toppings.splice(index, 1)
     }
+    return this
   }
 
   displayToppings () {
-   // return this.toppings.reduce
+    return this
   }
 }
