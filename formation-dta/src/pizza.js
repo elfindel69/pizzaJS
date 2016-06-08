@@ -1,10 +1,38 @@
 
-function Pizza (name) {
-  this.name = name
-}
+var toppings = [
+  'tomato sauce',
+  'mozzarella',
+  'mushrooms',
+  'ham',
+  'eggs',
+  'artichoke',
+  'green olives',
+  'onion',
+  'sweet corn',
+  'green peppers',
+  'salami',
+  'pepperoni',
+  'peas'
+]
 
-Pizza.prototype.setName = function (name) {
-  this.name = name
-}
+class Pizza {
+  constructor (name) {
+    this.name = name
+    this.toppings = []
+  }
+  setName (name) {
+    this.name = name
+  }
 
+  addTopping (topping) {
+    if (toppings.indexOf(topping) !== -1) {
+      this.toppings.push(topping)
+    }
+  }
+
+  removeTopping (topping) {
+    //
+  }
+}
+ 
 export default Pizza
