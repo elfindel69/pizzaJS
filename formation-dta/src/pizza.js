@@ -25,7 +25,7 @@ class Pizza {
   }
 
   addTopping (topping) {
-    if (authorizedToppings.indexOf(topping) !== -1) {
+    if (this.isLegalTopping(topping)) {
       var arrTopping = this.toppings.filter(index => index === topping)
       console.log(arrTopping)
       if (arrTopping.length < 2) {
@@ -34,11 +34,19 @@ class Pizza {
     }
   }
 
+  isLegalTopping (topping) {
+    return authorizedToppings.includes(topping)
+  }
+
   removeTopping (topping) {
     var index = this.toppings.indexOf(topping)
     if (index !== -1) {
       this.toppings.splice(index, 1)
     }
+  }
+
+  displayToppings () {
+   // return this.toppings.reduce
   }
 }
 
