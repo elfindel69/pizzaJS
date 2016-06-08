@@ -1,4 +1,4 @@
-import Pizza from './pizza.js'
+import { Pizza } from './pizza.js'
 
 var p = new Pizza('toto')
 

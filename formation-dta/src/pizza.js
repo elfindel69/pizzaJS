@@ -1,21 +1,7 @@
+import { toppings as authorizedToppings } from './toppings.js'
 
-var authorizedToppings = [
-  'tomato sauce',
-  'mozzarella',
-  'mushrooms',
-  'ham',
-  'eggs',
-  'artichoke',
-  'green olives',
-  'onion',
-  'sweet corn',
-  'green peppers',
-  'salami',
-  'pepperoni',
-  'peas'
-]
+export class Pizza {
 
-class Pizza {
   constructor (name) {
     this.name = name
     this.toppings = []
@@ -25,13 +11,10 @@ class Pizza {
   }
 
   addTopping (topping) {
-    if (this.isLegalTopping(topping)) {
-      var arrTopping = this.toppings.filter(index => index === topping)
-      console.log(arrTopping)
-      if (arrTopping.length < 2) {
-        this.toppings.push(topping)
-      }
-    }
+    if (!this.isLegalTopping(topping)) return
+
+    if (this.toppings.filter(index => index === topping).length > 1) return
+    this.toppings.push(topping)
   }
 
   isLegalTopping (topping) {
@@ -49,5 +32,3 @@ class Pizza {
    // return this.toppings.reduce
   }
 }
-
-export default Pizza
