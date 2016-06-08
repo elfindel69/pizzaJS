@@ -31,8 +31,11 @@ class Pizza {
   }
 
   removeTopping (topping) {
-    //
+    var index = this.toppings.indexOf(topping)
+    if (index !== -1) {
+      this.toppings.splice(index, 1)
+    }
   }
 }
- 
+
 export default Pizza
