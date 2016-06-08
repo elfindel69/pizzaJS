@@ -2,9 +2,9 @@ import { toppings as authorizedToppings } from './toppings.js'
 
 export class Pizza {
 
-  constructor (name) {
+  constructor (name, toppings = []) {
     this.name = name
-    this.toppings = []
+    this.toppings = toppings
   }
   setName (name) {
     this.name = name
