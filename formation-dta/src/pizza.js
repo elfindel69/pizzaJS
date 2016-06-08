@@ -1,5 +1,5 @@
 
-var toppings = [
+var authorizedToppings = [
   'tomato sauce',
   'mozzarella',
   'mushrooms',
@@ -25,8 +25,12 @@ class Pizza {
   }
 
   addTopping (topping) {
-    if (toppings.indexOf(topping) !== -1) {
-      this.toppings.push(topping)
+    if (authorizedToppings.indexOf(topping) !== -1) {
+      var arrTopping = this.toppings.filter(index => index === topping)
+      console.log(arrTopping)
+      if (arrTopping.length < 2) {
+        this.toppings.push(topping)
+      }
     }
   }
 
