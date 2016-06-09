@@ -1,10 +1,16 @@
 import { toppings as authorizedToppings } from './toppings.js'
+const STATUS = {
+  RAW: 0,
+  COOKING: 1,
+  COOKED: 2
+}
 
 export class Pizza {
 
   constructor (name, toppings = []) {
     this.name = name
     this.toppings = toppings
+    this.status = STATUS.RAW
   }
 
   setName (name) {
@@ -30,6 +36,19 @@ export class Pizza {
       this.toppings.splice(pos, 1)
     }
     return this
+  }
+
+  cook (time = 1000) {
+    return new Promise((resolve, reject) => {
+      if (this.status === STATUS.COOKING) return reject('Pizza en cours de cuisson')
+      if (this.status === STATUS.COOKED) return reject('Pizza déjà cuite')
+
+      this.status = STATUS.COOKING
+      setTimeout(() => {
+        this.status = STATUS.COOKED
+        resolve(this)
+      }, time)
+    })
   }
 
   translate (topping, lang = 'en') {
