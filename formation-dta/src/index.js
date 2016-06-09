@@ -1,41 +1,37 @@
 import { Pizza } from './pizza.js'
 import { PizzaList } from './pizza-list.js'
+import { toppings } from './toppings.js'
 
 var pizzaList = new PizzaList()
 var pizza = null
 var h2 = document.getElementById('pizza')
+var list = document.getElementById('list')
+var text = document.getElementById('label')
+
+Object.keys(toppings).forEach(topping => {
+  var toppingButton = document.createElement('button')
+  toppingButton.innerHTML = topping
+  toppingButton.addEventListener('click', evt => {
+    pizza.addTopping(topping)
+    console.log(pizza)
+    h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
+  })
+  list.appendChild(toppingButton)
+})
+
 document.getElementById('createPizza')
   .addEventListener('click', function (evt) {
-    var text = document.getElementById('label')
     pizza = new Pizza(text.value)
+    list.style.visibility = 'visible'
     h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
     console.log(pizza)
-  }, false)
-
-document.getElementById('eggs')
-  .addEventListener('click', function (evt) {
-    pizza.addTopping('eggs')
-    console.log(pizza)
-    h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
-  }, false)
-
-document.getElementById('mushrooms')
-  .addEventListener('click', function (evt) {
-    pizza.addTopping('mushrooms')
-    console.log(pizza)
-    h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
-  }, false)
-
-document.getElementById('tomato')
-  .addEventListener('click', function (evt) {
-    pizza.addTopping('tomato sauce')
-    console.log(pizza)
-    h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
   }, false)
 
 document.getElementById('savePizza')
   .addEventListener('click', function (evt) {
     console.log(pizza)
+    list.style.visibility = 'hidden'
+    text.value = ''
     pizzaList.addPizza(pizza)
   }, false)
 
