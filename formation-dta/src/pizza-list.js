@@ -1,14 +1,25 @@
+import Dexie from 'dexie'
 
 export class PizzaList {
   constructor () {
-    this.pizzas = []
+    this.db = new Dexie('pizzeria')
+    this.db.version(1).stores({
+      pizzas: '++id, name'
+    })
+    this.db.open()
   }
 
   addPizza (pizza) {
-    this.pizzas.push(pizza)
+    this.db.pizzas.add(pizza).then((id) => console.log(`la pizza ${id} a bien à été enregistrée`))
+  }
+
+  getPizzas () {
+    return this.db.pizzas.toArray()
   }
 
   with (topping) {
-    return this.pizzas.filter(pizza => pizza.toppings.includes(topping))
+    if (!topping) return this.getPizzas()
+    return this.getPizzas()
+      .then(pizzas => pizzas.filter(pizza => pizza.toppings.indexOf(topping) !== -1))
   }
 }

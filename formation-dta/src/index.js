@@ -2,47 +2,59 @@ import { Pizza } from './pizza.js'
 import { PizzaList } from './pizza-list.js'
 
 var pizzaList = new PizzaList()
+var pizza = null
 
-pizzaList.addPizza(
-  new Pizza('Margherita')
-    .addTopping('tomato sauce')
-    .addTopping('mozzarella')
-)
+document.getElementById('createPizza')
+  .addEventListener('click', function (evt) {
+    pizza = new Pizza('margherita')
+    console.log(pizza)
+  }, false)
 
-pizzaList.addPizza(
-  new Pizza('Funghi')
-    .addTopping('tomato sauce')
-    .addTopping('mozzarella')
-    .addTopping('mushrooms')
-)
+document.getElementById('eggs')
+  .addEventListener('click', function (evt) {
+    pizza.addTopping('eggs')
+    console.log(pizza)
+  }, false)
 
-pizzaList.pizzas[0]
-  .cook(2000)
-  .then((pizza) => {
-    console.log('Bing ! Pizza cuite', pizza)
-  })
-  .catch(err => {
-    console.log(err)
-  })
+document.getElementById('mushrooms')
+  .addEventListener('click', function (evt) {
+    pizza.addTopping('mushrooms')
+    console.log(pizza)
+  }, false)
 
-setTimeout(function () {
-  pizzaList.pizzas[0]
-    .cook(1000)
-    .then((pizza) => {
-      console.log('Bing ! Pizza cuite', pizza)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-}, 1000)
+document.getElementById('savePizza')
+  .addEventListener('click', function (evt) {
+    console.log(pizza)
+    pizzaList.addPizza(pizza)
+  }, false)
 
-setTimeout(function () {
-  pizzaList.pizzas[0]
-    .cook(1000)
-    .then(() => {
-      console.log('Bing ! Pizza cuite')
-    })
-    .catch(err => {
-      console.log(err)
-    })
-}, 2500)
+// pizzaList.pizzas[0]
+//   .cook(2000)
+//   .then((pizza) => {
+//     console.log('Bing ! Pizza cuite', pizza)
+//   })
+//   .catch(err => {
+//     console.log(err)
+//   })
+
+// setTimeout(function () {
+//   pizzaList.pizzas[0]
+//     .cook(1000)
+//     .then((pizza) => {
+//       console.log('Bing ! Pizza cuite', pizza)
+//     })
+//     .catch(err => {
+//       console.log(err)
+//     })
+// }, 1000)
+
+// setTimeout(function () {
+//   pizzaList.pizzas[0]
+//     .cook(1000)
+//     .then(() => {
+//       console.log('Bing ! Pizza cuite')
+//     })
+//     .catch(err => {
+//       console.log(err)
+//     })
+// }, 2500)

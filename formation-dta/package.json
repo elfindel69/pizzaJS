@@ -22,6 +22,7 @@
     "uglify-js": "^2.6.2"
   },
   "dependencies": {
+    "dexie": "^1.4.1",
     "moment": "^2.13.0"
   }
 }
