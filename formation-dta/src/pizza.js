@@ -35,7 +35,6 @@ export class Pizza {
 
   displayToppings () {
     let map = _.groupBy(this.toppings)
-    console.log(map)
     return _.map(map, value => value[0] + ' ' + value.length)
   }
 }
