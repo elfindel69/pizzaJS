@@ -17,7 +17,7 @@ pizza.setName('4 fromages')
   .addTopping('mushrooms')
   .addTopping('eggs')
 console.log(pizza)
-console.log(pizza.displayToppings())
+console.log(pizza.toppings2string())
 
 pizzas.addPizza(pizza)
 pizzas.addPizza(new Pizza('egg').addTopping('eggs'))

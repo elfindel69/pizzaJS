@@ -11,4 +11,8 @@ export class PizzaList {
   with (topping) {
     return this.pizzas.filter(pizza => pizza.toppings.includes(topping))
   }
+
+  search (topping) {
+    return pizzas => pizzas.filter(pizza => pizza.toppings.includes(topping))
+  }
 }
