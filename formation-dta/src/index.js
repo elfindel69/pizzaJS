@@ -3,10 +3,12 @@ import { PizzaList } from './pizza-list.js'
 
 var pizzaList = new PizzaList()
 var pizza = null
-
+var h2 = document.getElementById('pizza')
 document.getElementById('createPizza')
   .addEventListener('click', function (evt) {
-    pizza = new Pizza('margherita')
+    var text = document.getElementById('label')
+    pizza = new Pizza(text.value)
+    h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
     console.log(pizza)
   }, false)
 
@@ -14,12 +16,21 @@ document.getElementById('eggs')
   .addEventListener('click', function (evt) {
     pizza.addTopping('eggs')
     console.log(pizza)
+    h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
   }, false)
 
 document.getElementById('mushrooms')
   .addEventListener('click', function (evt) {
     pizza.addTopping('mushrooms')
     console.log(pizza)
+    h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
+  }, false)
+
+document.getElementById('tomato')
+  .addEventListener('click', function (evt) {
+    pizza.addTopping('tomato sauce')
+    console.log(pizza)
+    h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
   }, false)
 
 document.getElementById('savePizza')
