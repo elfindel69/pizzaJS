@@ -100,5 +100,26 @@ function createTableRows (pizza) {
   tr.appendChild(tdCook)
 
   tabPizzas.appendChild(tr)
+
+  // affichage bouton remove
+  var tdRemove = document.createElement('td')
+  tdCook.style.border = '1px solid black'
+  var btnRemove = document.createElement('button')
+  btnRemove.innerHTML = 'supprimer'
+  btnRemove.addEventListener('click', evt => {
+  // suppression de la pizza
+    pizzaList.removePizza(pizza.id)
+        .then((pizza) => {
+          tr.remove()
+        })
+        .catch(err => {
+          window.alert(err)
+          console.log(err)
+        })
+  })
+  tdRemove.appendChild(btnRemove)
+  tr.appendChild(tdRemove)
+
+  tabPizzas.appendChild(tr)
 }
 
