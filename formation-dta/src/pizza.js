@@ -1,5 +1,5 @@
 import { toppings as authorizedToppings } from './toppings.js'
-const STATUS = {
+export const STATUS = {
   RAW: 0,
   COOKING: 1,
   COOKED: 2
@@ -7,15 +7,19 @@ const STATUS = {
 
 export class Pizza {
 
-  constructor (name, toppings = [], status = STATUS.RAW, id = 0) {
+  constructor (name, toppings = [], status = STATUS.RAW) {
     this.name = name
     this.toppings = toppings
     this.status = status
-    this.id = id
   }
 
   setName (name) {
     this.name = name
+    return this
+  }
+
+  setId (id) {
+    this.id = id
     return this
   }
 

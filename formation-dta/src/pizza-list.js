@@ -10,11 +10,11 @@ export class PizzaList {
   }
 
   addPizza (pizza) {
-    this.db.pizzas.add(pizza).then((id) => console.log(`la pizza ${id} a bien à été enregistrée`))
+    return this.db.pizzas.add(pizza)
   }
 
   removePizza (id) {
-    return this.db.pizzas.delete(id).then((id) => console.log(`la pizza ${id} a bien à été supprimée`))
+    return this.db.pizzas.delete(id)
   }
 
   getPizzas () {

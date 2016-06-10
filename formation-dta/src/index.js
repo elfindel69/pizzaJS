@@ -14,67 +14,58 @@ pizzaList.getPizzas()
 // map : création des objets pizza
 .then(pizzas => {
   return pizzas.map(pizza => {
-    return new Pizza(pizza.name, pizza.toppings, pizza.status, pizza.id)
+    return new Pizza(pizza.name, pizza.toppings, pizza.status).setId(pizza.id)
   })
 })
 // affichage
 .then(pizzas => pizzas.forEach(
   pizza => {
-    createTableRows(pizza)
+    createTableRow(pizza)
   }
 ))
+
+// ajout des pizzas
+document.getElementById('addPizza')
+  .addEventListener('click', function (evt) {
+    var newPizza = new Pizza('test', ['eggs', 'mushrooms'])
+    pizzaList.addPizza(newPizza).then(id => {
+      return new Pizza(newPizza.name, newPizza.toppings, newPizza.status).setId(newPizza.id)
+    }).then(pizza => createTableRow(pizza))
+  }, false)
 
 // fonction création header tableau
 function createTableHeader () {
   // header
   var tabHeader = document.createElement('th')
-    // pizza 
-  var tr = document.createElement('tr')
-  tr.id = pizza.id
-
   // affichage id
-  var tdId = document.createElement('td')
-  tdId.style.border = '1px solid black'
-  tdId.innerHTML = pizza.id
-  tr.appendChild(tdId)
+  tabHeader.appendChild(createTableCell('ID'))
 
   // nom
-  var headerName = document.createElement('td')
-  headerName.style.border = '1px solid black'
-  headerName.innerHTML = 'NOM'
-  tabHeader.appendChild(headerName)
+  tabHeader.appendChild(createTableCell('NOM'))
 
   // toppings
-  var headerToppings = document.createElement('td')
-  headerToppings.style.border = '1px solid black'
-  headerToppings.innerHTML = 'TOPPINGS'
-  tabHeader.appendChild(headerToppings)
+  tabHeader.appendChild(createTableCell('TOPPINGS'))
 
   // statut
-  var headerStatus = document.createElement('td')
-  headerStatus.style.border = '1px solid black'
-  headerStatus.innerHTML = 'STATUS'
-  tabHeader.appendChild(headerStatus)
+  tabHeader.appendChild(createTableCell('STATUS'))
 
   tabPizzas.appendChild(tabHeader)
 }
 
-// fonction création lignes du tableau
-function createTableRows (pizza) {
-  // pizza 
+// fonction création ligne du tableau
+function createTableRow (pizza) {
+  // pizza
   var tr = document.createElement('tr')
 
+  // affichage id
+  tr.appendChild(createTableCell(pizza.id))
+
   // affichage nom
-  var tdName = document.createElement('td')
-  tdName.style.border = '1px solid black'
-  tdName.innerHTML = pizza.name
-  tr.appendChild(tdName)
+  tr.appendChild(createTableCell(pizza.name))
 
    // affichage liste toppings
-  var tdToppings = document.createElement('td')
-  tdToppings.style.border = '1px solid black'
-  tdToppings.innerHTML = pizza.toppings2string()
-  tr.appendChild(tdToppings)
+  var toppings = pizza.toppings2string()
+  tr.appendChild(createTableCell(toppings))
 
   // affichage statut
   var tdStatus = document.createElement('td')
@@ -89,11 +80,7 @@ function createTableRows (pizza) {
   tr.appendChild(tdStatus)
 
   // affichage bouton cook
-  var tdCook = document.createElement('td')
-  tdCook.style.border = '1px solid black'
-  var btnCook = document.createElement('button')
-  btnCook.innerHTML = 'cook'
-  btnCook.addEventListener('click', evt => {
+  tr.appendChild(createTableCellButton('cook', evt => {
     // cuisson de la pizza
     pizza.cook(2000)
         .then((pizza) => {
@@ -103,18 +90,10 @@ function createTableRows (pizza) {
           window.alert(err)
           console.log(err)
         })
-  })
-  tdCook.appendChild(btnCook)
-  tr.appendChild(tdCook)
-
-  tabPizzas.appendChild(tr)
+  }))
 
   // affichage bouton remove
-  var tdRemove = document.createElement('td')
-  tdCook.style.border = '1px solid black'
-  var btnRemove = document.createElement('button')
-  btnRemove.innerHTML = 'supprimer'
-  btnRemove.addEventListener('click', evt => {
+  tr.appendChild(createTableCellButton('supprimer', evt => {
   // suppression de la pizza
     pizzaList.removePizza(pizza.id)
         .then((pizza) => {
@@ -124,32 +103,22 @@ function createTableRows (pizza) {
           window.alert(err)
           console.log(err)
         })
-  })
-  tdRemove.appendChild(btnRemove)
-  tr.appendChild(tdRemove)
-
-  tabPizzas.appendChild(tr)
-
-  // affichage bouton remove
-  var tdRemove = document.createElement('td')
-  tdCook.style.border = '1px solid black'
-  var btnRemove = document.createElement('button')
-  btnRemove.innerHTML = 'supprimer'
-  btnRemove.addEventListener('click', evt => {
-    // suppression de la pizza
-    pizzaList.removePizza(pizza.id)
-        .then((pizza) => {
-          tr.remove()
-        })
-        .catch(err => {
-          window.alert(err)
-          console.log(err)
-        })
-  })
-  tdRemove.appendChild(btnRemove)
-  tr.appendChild(tdRemove)
-
+  }))
   tabPizzas.appendChild(tr)
 }
 
+function createTableCell (name) {
+  var td = document.createElement('td')
+  td.style.border = '1px solid black'
+  td.innerHTML = name
+  return td
+}
 
+function createTableCellButton (name, callback) {
+  var td = document.createElement('td')
+  var btn = document.createElement('button')
+  btn.innerHTML = name
+  btn.addEventListener('click', callback)
+  td.appendChild(btn)
+  return td
+}
