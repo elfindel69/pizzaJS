@@ -1,5 +1,5 @@
 import { toppings as authorizedToppings } from './toppings.js'
-const STATUS = {
+export const STATUS = {
   RAW: 0,
   COOKING: 1,
   COOKED: 2
