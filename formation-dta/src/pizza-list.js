@@ -13,6 +13,10 @@ export class PizzaList {
     this.db.pizzas.add(pizza).then((id) => console.log(`la pizza ${id} a bien à été enregistrée`))
   }
 
+  removePizza (id) {
+    this.db.pizzas.delete(id).then((id) => console.log(`la pizza ${id} a bien à été supprimée`))
+  }
+
   getPizzas () {
     return this.db.pizzas.toArray()
   }
