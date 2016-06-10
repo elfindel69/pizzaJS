@@ -7,10 +7,11 @@ const STATUS = {
 
 export class Pizza {
 
-  constructor (name, toppings = [], status = STATUS.RAW) {
+  constructor (name, toppings = [], status = STATUS.RAW, id = 0) {
     this.name = name
     this.toppings = toppings
     this.status = status
+    this.id = id
   }
 
   setName (name) {
