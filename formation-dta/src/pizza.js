@@ -77,4 +77,14 @@ export class Pizza {
       })
       .join(', ')
   }
+
+  allToppingsToHtml () {
+    return `
+      <ul class="list-group">
+      ${Object.keys(authorizedToppings)
+        .map(topping => `
+          <li data-topping="${topping}" draggable="true" class="topping list-group-item" style="cursor:move">${this.translate(topping)}</li>
+        `).join('')}
+      </ul>`
+  }
 }

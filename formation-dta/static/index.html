@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
   <body>
     <table id='tabPizzas'></table>
     <br>
     <button id="addPizza">Ajouter pizza</button>
+    <div class="container-fluid" id="container" style='display:none; visibility:"hidden"'>
+
+      <div class="row">
+        <div class="col-md-12" id="pizzas"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <h3>Pizza</h3>
+          <input type="text" id='input' class="form-control">
+          <br>
+          <div class="well" id="pizza"></div>
+          <button id="save">Enregistrer</button>
+        </div>
+        <div class="col-md-4">
+          <h3>Liste des ingrédients</h3>
+          <div id="toppings"></div>
+        </div>
+      </div>
+
+    </div>
     <script src="build.js"></script>
     
   </body>
