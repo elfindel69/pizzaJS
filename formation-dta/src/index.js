@@ -1,9 +1,5 @@
 import { Pizza } from './pizza.js'
 import { PizzaList } from './pizza-list.js'
-import { toppings } from './toppings.js'
-
-
-
 
 var pizzaList = new PizzaList()
 // tableau des pizzas
@@ -99,7 +95,7 @@ function createTableRow (pizza) {
         .then((pizza) => {
           console.log(pizza)
           // enregistrer la pizza
-          pizzaList.updatePizza(pizza.id, pizza)
+          pizzaList.updatePizza(pizza)
           // modif statut
           tdStatus.innerHTML = 'COOKED'
         })
@@ -127,8 +123,14 @@ function createTableRow (pizza) {
     var div = document.getElementById('container')
     div.style.visibility = 'visible'
     div.style.display = 'block'
+    document.getElementById('input').value = pizza.name
     drawContainerPizza(pizza, 'Modifier', evt => {
-      pizzaList.updatePizza(pizza.id, pizza).then(() => {
+      pizzaList.updatePizza(pizza)
+      .then(id => {
+        return new Pizza(pizza.name, pizza.toppings, pizza.status).setId(pizza.id)
+      })
+      .then(pizza => {
+        console.log('133', pizza)
         updateTableRow(pizza.id, pizza)
       })
       var div = document.getElementById('container')
@@ -159,7 +161,7 @@ function createTableCellButton (name, callback) {
 
 function updateTableRow (rowId, pizza) {
   console.log(pizza)
-  //TODO
+  // TODO
 }
 
 function drawContainerPizza (pizza, btnName, btnCallback) {
@@ -193,7 +195,6 @@ function drawContainerPizza (pizza, btnName, btnCallback) {
     evt.target.style.backgroundColor = '#f5f5f5'
     drawPizza(pizzaArea, pizza)
   }, false)
-
 
   drawPizza(pizzaArea, pizza)
 

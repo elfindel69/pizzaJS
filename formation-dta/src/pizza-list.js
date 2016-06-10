@@ -17,8 +17,8 @@ export class PizzaList {
     return this.db.pizzas.delete(id)
   }
 
-  updatePizza (id, pizza) {
-    return this.db.pizzas.update(id, pizza)
+  updatePizza (pizza) {
+    return this.db.pizzas.put(pizza)
   }
 
   getPizzas () {
