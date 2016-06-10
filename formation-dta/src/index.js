@@ -8,28 +8,30 @@ var pizzaList = new PizzaList()
 var tabPizzas = document.getElementById('tabPizzas')
 tabPizzas.style.border = '1px solid black'
 
+createTableHeader()
+
 // header
-var tabHeader = document.createElement('th')
+// var tabHeader = document.createElement('th')
 
-// nom
-var headerName = document.createElement('td')
-headerName.style.border = '1px solid black'
-headerName.innerHTML = 'NOM'
-tabHeader.appendChild(headerName)
+// // nom
+// var headerName = document.createElement('td')
+// headerName.style.border = '1px solid black'
+// headerName.innerHTML = 'NOM'
+// tabHeader.appendChild(headerName)
 
-// toppings
-var headerToppings = document.createElement('td')
-headerToppings.style.border = '1px solid black'
-headerToppings.innerHTML = 'TOPPINGS'
-tabHeader.appendChild(headerToppings)
+// // toppings
+// var headerToppings = document.createElement('td')
+// headerToppings.style.border = '1px solid black'
+// headerToppings.innerHTML = 'TOPPINGS'
+// tabHeader.appendChild(headerToppings)
 
-// statut
-var headerStatus = document.createElement('td')
-headerStatus.style.border = '1px solid black'
-headerStatus.innerHTML = 'STATUS'
-tabHeader.appendChild(headerStatus)
+// // statut
+// var headerStatus = document.createElement('td')
+// headerStatus.style.border = '1px solid black'
+// headerStatus.innerHTML = 'STATUS'
+// tabHeader.appendChild(headerStatus)
 
-tabPizzas.appendChild(tabHeader)
+// tabPizzas.appendChild(tabHeader)
 
 // liste des pizzas
 pizzaList.getPizzas()
@@ -91,3 +93,35 @@ pizzaList.getPizzas()
     tabPizzas.appendChild(tr)
   }
 ))
+
+// fonction création header tableau
+function createTableHeader () {
+  // header
+  var tabHeader = document.createElement('th')
+
+  // nom
+  var headerName = document.createElement('td')
+  headerName.style.border = '1px solid black'
+  headerName.innerHTML = 'NOM'
+  tabHeader.appendChild(headerName)
+
+  // toppings
+  var headerToppings = document.createElement('td')
+  headerToppings.style.border = '1px solid black'
+  headerToppings.innerHTML = 'TOPPINGS'
+  tabHeader.appendChild(headerToppings)
+
+  // statut
+  var headerStatus = document.createElement('td')
+  headerStatus.style.border = '1px solid black'
+  headerStatus.innerHTML = 'STATUS'
+  tabHeader.appendChild(headerStatus)
+
+  tabPizzas.appendChild(tabHeader)
+}
+
+// fonction création cases du tableau
+function createTableRows (params) {
+  // à implémenter
+}
+
