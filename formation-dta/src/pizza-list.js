@@ -14,7 +14,7 @@ export class PizzaList {
   }
 
   removePizza (id) {
-    this.db.pizzas.delete(id).then((id) => console.log(`la pizza ${id} a bien à été supprimée`))
+    return this.db.pizzas.delete(id).then((id) => console.log(`la pizza ${id} a bien à été supprimée`))
   }
 
   getPizzas () {
