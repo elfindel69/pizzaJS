@@ -35,6 +35,34 @@ document.getElementById('savePizza')
     pizzaList.addPizza(pizza)
   }, false)
 
+
+var tabPizzas = document.getElementById('tabPizzas')
+tabPizzas.style.border = '1px solid black'
+
+pizzaList.getPizzas()
+.then(pizzas => {
+  return pizzas.map(pizza => {
+    return new Pizza(pizza.name, pizza.toppings)
+  })
+})
+.then(pizzas => pizzas.forEach(
+  pizza => {
+    var tr = document.createElement('tr')
+
+    var tdName = document.createElement('td')
+    tdName.style.border = '1px solid black'
+    tdName.innerHTML = pizza.name
+    tr.appendChild(tdName)
+
+    var tdToppings = document.createElement('td')
+    tdToppings.style.border = '1px solid black'
+    tdToppings.innerHTML = pizza.toppings2string()
+    tr.appendChild(tdToppings)
+    
+    tabPizzas.appendChild(tr)
+  }
+))
+
 // pizzaList.pizzas[0]
 //   .cook(2000)
 //   .then((pizza) => {
