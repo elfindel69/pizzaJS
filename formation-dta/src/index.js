@@ -3,53 +3,27 @@ import { PizzaList } from './pizza-list.js'
 import { toppings } from './toppings.js'
 
 var pizzaList = new PizzaList()
-var pizza = null
-var h2 = document.getElementById('pizza')
-var list = document.getElementById('list')
-var text = document.getElementById('label')
 
-Object.keys(toppings).forEach(topping => {
-  var toppingButton = document.createElement('button')
-  toppingButton.innerHTML = topping
-  toppingButton.addEventListener('click', evt => {
-    pizza.addTopping(topping)
-    console.log(pizza)
-    h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
-  })
-  list.appendChild(toppingButton)
-})
-
-document.getElementById('createPizza')
-  .addEventListener('click', function (evt) {
-    pizza = new Pizza(text.value)
-    list.style.visibility = 'visible'
-    h2.innerHTML = pizza.name + ' ' + pizza.toppings2string()
-    console.log(pizza)
-  }, false)
-
-document.getElementById('savePizza')
-  .addEventListener('click', function (evt) {
-    console.log(pizza)
-    list.style.visibility = 'hidden'
-    text.value = ''
-    pizzaList.addPizza(pizza)
-  }, false)
-
-
+// tableau des pizzas
 var tabPizzas = document.getElementById('tabPizzas')
 tabPizzas.style.border = '1px solid black'
 
+// header
 var tabHeader = document.createElement('th')
+
+// nom
 var headerName = document.createElement('td')
 headerName.style.border = '1px solid black'
 headerName.innerHTML = 'NOM'
 tabHeader.appendChild(headerName)
 
+// toppings
 var headerToppings = document.createElement('td')
 headerToppings.style.border = '1px solid black'
 headerToppings.innerHTML = 'TOPPINGS'
 tabHeader.appendChild(headerToppings)
 
+// statut
 var headerStatus = document.createElement('td')
 headerStatus.style.border = '1px solid black'
 headerStatus.innerHTML = 'STATUS'
@@ -57,26 +31,33 @@ tabHeader.appendChild(headerStatus)
 
 tabPizzas.appendChild(tabHeader)
 
+// liste des pizzas
 pizzaList.getPizzas()
+// map : création des objets pizza
 .then(pizzas => {
   return pizzas.map(pizza => {
     return new Pizza(pizza.name, pizza.toppings, pizza.status)
   })
 })
+// affichage
 .then(pizzas => pizzas.forEach(
   pizza => {
+    // pizza 
     var tr = document.createElement('tr')
 
+    // affichage nom
     var tdName = document.createElement('td')
     tdName.style.border = '1px solid black'
     tdName.innerHTML = pizza.name
     tr.appendChild(tdName)
 
+   // affichage liste toppings
     var tdToppings = document.createElement('td')
     tdToppings.style.border = '1px solid black'
     tdToppings.innerHTML = pizza.toppings2string()
     tr.appendChild(tdToppings)
 
+    // affichage statut
     var tdStatus = document.createElement('td')
     tdStatus.style.border = '1px solid black'
     if (pizza.status === 0) {
@@ -88,11 +69,13 @@ pizzaList.getPizzas()
     }
     tr.appendChild(tdStatus)
 
+    // affichage bouton cook
     var tdCook = document.createElement('td')
     tdCook.style.border = '1px solid black'
     var btnCook = document.createElement('button')
     btnCook.innerHTML = 'cook'
     btnCook.addEventListener('click', evt => {
+      // cuisson de la pizza
       pizza.cook(2000)
         .then((pizza) => {
           tdStatus.innerHTML = 'COOKED'
