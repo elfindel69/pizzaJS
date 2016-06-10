@@ -3,55 +3,7 @@ import { PizzaList } from './pizza-list.js'
 import { toppings } from './toppings.js'
 
 
-var pizza = new Pizza('autre pizza', ['eggs'])
 
-document.getElementById('toppings').innerHTML = pizza.allToppingsToHtml()
-Array.prototype.slice.call(document.getElementsByClassName('topping'))
-  .forEach(li => {
-    li.addEventListener('dragstart', evt => {
-      evt.dataTransfer.setData('text/html', li.dataset.topping)
-    }, false)
-  })
-
-var pizzaArea = document.getElementById('pizza')
-
-pizzaArea.addEventListener('dragenter', evt => {
-  evt.preventDefault()
-  evt.target.style.backgroundColor = 'red'
-}, false)
-
-pizzaArea.addEventListener('dragover', evt => {
-  evt.preventDefault()
-}, false)
-
-pizzaArea.addEventListener('dragleave', evt => {
-  evt.preventDefault()
-  evt.target.style.backgroundColor = '#f5f5f5'
-}, false)
-
-pizzaArea.addEventListener('drop', evt => {
-  evt.preventDefault()
-  pizza.addTopping(evt.dataTransfer.getData('text/html'))
-  evt.target.style.backgroundColor = '#f5f5f5'
-  drawPizza()
-}, false)
-
-function drawPizza () {
-  pizzaArea.innerHTML = pizza.toppings2string()
-}
-drawPizza()
-
-var btnSave = document.getElementById('save')
-btnSave.addEventListener('click', evt => {
-  var input = document.getElementById('input')
-  pizza.setName(input.value)
-  pizzaList.addPizza(pizza).then(id => {
-    return new Pizza(pizza.name, pizza.toppings, pizza.status).setId(pizza.id)
-  }).then(pizza => createTableRow(pizza))
-  var div = document.getElementById('container')
-  div.style.display = 'none'
-  div.style.visibility = 'hidden'
-})
 
 var pizzaList = new PizzaList()
 // tableau des pizzas
@@ -81,6 +33,17 @@ document.getElementById('addPizza')
     var div = document.getElementById('container')
     div.style.visibility = 'visible'
     div.style.display = 'block'
+    var pizza = new Pizza('autre pizza', ['eggs'])
+    drawContainerPizza(pizza, 'Enregistrer', evt => {
+      var input = document.getElementById('input')
+      pizza.setName(input.value)
+      pizzaList.addPizza(pizza).then(id => {
+        return new Pizza(pizza.name, pizza.toppings, pizza.status).setId(pizza.id)
+      }).then(pizza => createTableRow(pizza))
+      var div = document.getElementById('container')
+      div.style.display = 'none'
+      div.style.visibility = 'hidden'
+    })
   }, false)
 
 // fonction création header tableau
@@ -106,7 +69,7 @@ function createTableHeader () {
 function createTableRow (pizza) {
   // pizza
   var tr = document.createElement('tr')
-
+  tr.id = pizza.id
   // affichage id
   tr.appendChild(createTableCell(pizza.id))
 
@@ -154,6 +117,23 @@ function createTableRow (pizza) {
           console.log(err)
         })
   }))
+
+   // affichage bouton modif
+  tr.appendChild(createTableCellButton('edit', function (evt) {
+    var div = document.getElementById('container')
+    div.style.visibility = 'visible'
+    div.style.display = 'block'
+    drawContainerPizza(pizza, 'Modifier', evt => {
+      pizzaList.updatePizza(pizza.id, pizza).then(() => {
+        updateTableRow(pizza.id, pizza)
+      })
+      var div = document.getElementById('container')
+      div.style.display = 'none'
+      div.style.visibility = 'hidden'
+    })
+  }))
+
+  // ajout ligne
   tabPizzas.appendChild(tr)
 }
 
@@ -172,3 +152,52 @@ function createTableCellButton (name, callback) {
   td.appendChild(btn)
   return td
 }
+
+function updateTableRow (rowId, pizza) {
+  //TODO
+}
+
+function drawContainerPizza (pizza, btnName, btnCallback) {
+  document.getElementById('toppings').innerHTML = pizza.allToppingsToHtml()
+  Array.prototype.slice.call(document.getElementsByClassName('topping'))
+    .forEach(li => {
+      li.addEventListener('dragstart', evt => {
+        evt.dataTransfer.setData('text/html', li.dataset.topping)
+      }, false)
+    })
+
+  var pizzaArea = document.getElementById('pizza')
+
+  pizzaArea.addEventListener('dragenter', evt => {
+    evt.preventDefault()
+    evt.target.style.backgroundColor = 'red'
+  }, false)
+
+  pizzaArea.addEventListener('dragover', evt => {
+    evt.preventDefault()
+  }, false)
+
+  pizzaArea.addEventListener('dragleave', evt => {
+    evt.preventDefault()
+    evt.target.style.backgroundColor = '#f5f5f5'
+  }, false)
+
+  pizzaArea.addEventListener('drop', evt => {
+    evt.preventDefault()
+    pizza.addTopping(evt.dataTransfer.getData('text/html'))
+    evt.target.style.backgroundColor = '#f5f5f5'
+    drawPizza(pizzaArea, pizza)
+  }, false)
+
+
+  drawPizza(pizzaArea, pizza)
+
+  var btnSave = document.getElementById('save')
+  btnSave.innerHTML = btnName
+  btnSave.addEventListener('click', btnCallback)
+}
+
+function drawPizza (pizzaArea, pizza) {
+  pizzaArea.innerHTML = pizza.toppings2string()
+}
+

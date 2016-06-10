@@ -17,6 +17,10 @@ export class PizzaList {
     return this.db.pizzas.delete(id)
   }
 
+  updatePizza (id, pizza) {
+    return this.db.pizzas.update(id, pizza)
+  }
+
   getPizzas () {
     return this.db.pizzas.toArray()
   }
