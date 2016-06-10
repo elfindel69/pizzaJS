@@ -39,10 +39,28 @@ document.getElementById('savePizza')
 var tabPizzas = document.getElementById('tabPizzas')
 tabPizzas.style.border = '1px solid black'
 
+var tabHeader = document.createElement('th')
+var headerName = document.createElement('td')
+headerName.style.border = '1px solid black'
+headerName.innerHTML = 'NOM'
+tabHeader.appendChild(headerName)
+
+var headerToppings = document.createElement('td')
+headerToppings.style.border = '1px solid black'
+headerToppings.innerHTML = 'TOPPINGS'
+tabHeader.appendChild(headerToppings)
+
+var headerStatus = document.createElement('td')
+headerStatus.style.border = '1px solid black'
+headerStatus.innerHTML = 'STATUS'
+tabHeader.appendChild(headerStatus)
+
+tabPizzas.appendChild(tabHeader)
+
 pizzaList.getPizzas()
 .then(pizzas => {
   return pizzas.map(pizza => {
-    return new Pizza(pizza.name, pizza.toppings)
+    return new Pizza(pizza.name, pizza.toppings, pizza.status)
   })
 })
 .then(pizzas => pizzas.forEach(
@@ -69,6 +87,23 @@ pizzaList.getPizzas()
       tdStatus.innerHTML = 'COOKED'
     }
     tr.appendChild(tdStatus)
+
+    var tdCook = document.createElement('td')
+    tdCook.style.border = '1px solid black'
+    var btnCook = document.createElement('button')
+    btnCook.innerHTML = 'cook'
+    btnCook.addEventListener('click', evt => {
+      pizza.cook(2000)
+        .then((pizza) => {
+          tdStatus.innerHTML = 'COOKED'
+        })
+        .catch(err => {
+          window.alert(err)
+          console.log(err)
+        })
+    })
+    tdCook.appendChild(btnCook)
+    tr.appendChild(tdCook)
 
     tabPizzas.appendChild(tr)
   }
