@@ -97,6 +97,10 @@ function createTableRow (pizza) {
     // cuisson de la pizza
     pizza.cook(2000)
         .then((pizza) => {
+          console.log(pizza)
+          // enregistrer la pizza
+          pizzaList.updatePizza(pizza.id, pizza)
+          // modif statut
           tdStatus.innerHTML = 'COOKED'
         })
         .catch(err => {
@@ -154,6 +158,7 @@ function createTableCellButton (name, callback) {
 }
 
 function updateTableRow (rowId, pizza) {
+  console.log(pizza)
   //TODO
 }
 
