@@ -58,7 +58,18 @@ pizzaList.getPizzas()
     tdToppings.style.border = '1px solid black'
     tdToppings.innerHTML = pizza.toppings2string()
     tr.appendChild(tdToppings)
-    
+
+    var tdStatus = document.createElement('td')
+    tdStatus.style.border = '1px solid black'
+    if (pizza.status === 0) {
+      tdStatus.innerHTML = 'RAW'
+    } else if (pizza.status === 1) {
+      tdStatus.innerHTML = 'COOKING'
+    } else {
+      tdStatus.innerHTML = 'COOKED'
+    }
+    tr.appendChild(tdStatus)
+
     tabPizzas.appendChild(tr)
   }
 ))
