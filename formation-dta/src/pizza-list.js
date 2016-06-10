@@ -10,7 +10,7 @@ export class PizzaList {
   }
 
   addPizza (pizza) {
-    this.db.pizzas.add(pizza).then((id) => console.log(`la pizza ${id} a bien à été enregistrée`))
+    return this.db.pizzas.add(pizza).then((id) => console.log(`la pizza ${id} a bien à été enregistrée`))
   }
 
   removePizza (id) {
