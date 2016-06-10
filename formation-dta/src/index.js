@@ -35,6 +35,26 @@ document.getElementById('savePizza')
     pizzaList.addPizza(pizza)
   }, false)
 
+// fonction d'affichiage de la liste des pizzas
+var promiseAllPizzas = pizzaList.getPizzas()
+
+function displayPizza () {
+    for (var pizza in promiseAllPizzas) {
+      console.log('Pizza : ')
+      console.log('Name : ' + pizza.name)
+      console.log('Toppings : ' + pizza[toppings])
+      console.log('Status : ' + pizza[status])
+    }
+}
+
+function displayNoPizza () {
+    console.log('Désole : pas de pizza à afficher')
+}
+// var pizzaTable = document.createElement('table')
+promiseAllPizzas.then(pizzas => {
+  console.log(pizzas)
+})
+
 // pizzaList.pizzas[0]
 //   .cook(2000)
 //   .then((pizza) => {
