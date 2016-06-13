@@ -18,8 +18,16 @@ export class PizzaListController {
   }
 
   cookPizza (pizza) {
-    this.$timeout(() => {
+    return this.$timeout(() => {
       pizza.status = 1
-    }, 1000)
+    }, 3000)
+  }
+
+
+  cookAllPizzas () {
+    const pizza = this.pizzas.find(p => p.status === 0)
+    if (!pizza) return
+    this.cookPizza(pizza)
+      .then(this.cookAllPizzas.bind(this))
   }
 }
