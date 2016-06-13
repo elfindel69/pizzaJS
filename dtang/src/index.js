@@ -32,6 +32,6 @@ function MonController () {
     ctrl.newName = ''
   }
 
-  ctrl.friends = [{name: 'Bruno'}, {name: 'Nicolas'}]
+  ctrl.users = [{name: 'Bruno'}, {name: 'Nicolas'}]
 }
 
