@@ -18,10 +18,13 @@ angular.bootstrap(document, ['dtang'])
 
 function MonController () {
   const ctrl = this
+  ctrl.newUser = {
+    name: ''
+  }
 
   ctrl.addUser = function () {
-    ctrl.friends.push({name: ctrl.newName})
-    ctrl.newName = ''
+    ctrl.users.push(angular.copy(ctrl.newUser))
+    ctrl.newUser.name = ''
   }
 
   ctrl.removeUser = function (index) {
