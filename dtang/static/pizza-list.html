@@ -1,0 +1,24 @@
+<div ng-controller="PizzaListController as $ctrl">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>NOM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="pizza in $ctrl.pizzas track by $index">
+        <td>{{ pizza.name }}</td>
+        <td>
+          <button ng-click="$ctrl.cookPizza(pizza)" ng-if="!pizza.status" class="btn">cook me</button>
+          <span ng-if="pizza.status">CUITE</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button ng-click="$ctrl.addPizza()" class="btn btn-primary">
+    Nouvelle Pizza
+  </button>
+
+</div>
