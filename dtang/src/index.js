@@ -18,32 +18,4 @@ angular.bootstrap(document, ['dtang'])
 
 function MonController () {
   const ctrl = this
-
-  function initNewUser () {
-    ctrl.newUser = {
-      name: 'John Doe',
-      email: ''
-    }
-  }
-  initNewUser()
-
-  ctrl.users = [
-    {
-      name: 'Jean'
-    },
-    { name: 'Paul'
-    },
-    { name: 'John'
-    }
-  ]
-
-  ctrl.addUser = function () {
-    ctrl.users.push(angular.copy(ctrl.newUser))
-    initNewUser()
-  }
-
-  ctrl.removeUser = function (pos) {
-    // ctrl.users.splice(pos, 1)
-    ctrl.users[pos].deleted = !ctrl.users[pos].deleted
-  }
 }

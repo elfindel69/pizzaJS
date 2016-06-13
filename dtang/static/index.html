@@ -17,18 +17,10 @@
     <div class="row">
       <div class="col-md-12" ng-controller="MonController as ctrl">
         
-        <ul class="list-group">
-          <li class="list-group-item" ng-class="{barre:user.deleted}" ng-repeat="user in ctrl.users track by $index">
-            {{ user.name }} - 
-             <button type="button" class="close" ng-click="ctrl.removeUser($index)"> <span aria-hidden="true">&times;</span></button>
-          </li>
-        </ul>
-      <label for="name">name</label> 
-      <input id="name" ng-model="ctrl.newUser.name" type="text" class="form-control">
-      <label for="email">email</label> 
-      <input id="email" ng-model="ctrl.newUser.email" type="email" class="form-control">
-
-          <button ng-click="ctrl.addUser()" class="btn btn-primary">Add user</button>
+    
+          <button ng-click="ctrl.li = 'un.html'" class="btn btn-primary">un</button>
+           <button ng-click="ctrl.li = 'deux.html'" class="btn btn-primary">deux</button>
+           <ng-include src="ctrl.li"></ng-include>
       </div>
     </div>
   </div>
