@@ -18,9 +18,9 @@
       <div class="col-md-12" ng-controller="MonController as ctrl">
         
     
-          <button ng-click="ctrl.li = 'un.html'" class="btn btn-primary">un</button>
-           <button ng-click="ctrl.li = 'deux.html'" class="btn btn-primary">deux</button>
-           <ng-include src="ctrl.li"></ng-include>
+          <button ng-click="ctrl.li = 'un'" class="btn btn-primary">un</button>
+           <button ng-click="ctrl.li = 'deux'" class="btn btn-primary">deux</button>
+           <ng-include src="ctrl.li+'.html'"></ng-include>
       </div>
     </div>
   </div>

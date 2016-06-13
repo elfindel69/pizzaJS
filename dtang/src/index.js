@@ -18,4 +18,5 @@ angular.bootstrap(document, ['dtang'])
 
 function MonController () {
   const ctrl = this
+  ctrl.li = 'zero'
 }
