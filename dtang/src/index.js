@@ -5,7 +5,9 @@ angular.module('dtang', [])
   .config(function () {
     console.log('DTANG CONFIG')
   })
+
   .value('AppName', 'DTANG')
+
   .run(function (AppName) {
     console.log(AppName + ' START')
   })
@@ -14,16 +16,19 @@ angular.module('dtang', [])
 
 angular.bootstrap(document, ['dtang'])
 
-
 function MonController () {
-  console.log('Mon Controller')
-  const monCtrl = this
-  monCtrl.message = 'Hello '
+  const ctrl = this
 
-  monCtrl.user = {
-    name: 'Thomas'
+  ctrl.addUser = function () {
+    ctrl.friends.push({name: ctrl.newName})
+    ctrl.newName = ''
   }
-  monCtrl.getName = function () {
-    return 'Thomas'
+
+  ctrl.removeUser = function (index) {
+    ctrl.friends.splice(index, 1)
+    ctrl.newName = ''
   }
+
+  ctrl.friends = [{name: 'Bruno'}, {name: 'Nicolas'}]
 }
+
