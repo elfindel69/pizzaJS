@@ -1,13 +1,16 @@
+import { Pizza } from './pizza'
+
 export class PizzaListController {
   constructor ($timeout) {
     this.$timeout = $timeout
 
     this.pizzas = [
-      { name: 'Pizza 1', status: 0 },
-      { name: 'Pizza 2', status: 0 },
-      { name: 'Pizza 3', status: 0 },
-      { name: 'Pizza 4', status: 0 },
-      { name: 'Pizza 5', status: 0 }
+      new Pizza({ name: 'Pizza 1', status: 0, toppings: ['eggs', 'mushrooms'] }),
+      new Pizza({ name: 'Pizza 2', status: 0, toppings: [] }),
+      new Pizza({ name: 'Pizza 3', status: 0, toppings: ['eggs', 'eggs', 'mushrooms'] }),
+      new Pizza({ name: 'Pizza 4', status: 0 }),
+      new Pizza({ name: 'Pizza 5', status: 0 }),
+      { name: 'Pizza 5', status: 0, toppings: ['eggs'] }
     ]
   }
 
@@ -23,10 +26,11 @@ export class PizzaListController {
     }, 3000)
   }
 
-  cookAllPizzas () {
+  cookPizzas () {
     const pizza = this.pizzas.find(p => p.status === 0)
     if (!pizza) return
     this.cookPizza(pizza)
-      .then(this.cookAllPizzas.bind(this))
+      .then(this.cookPizzas.bind(this))
   }
+
 }

@@ -1,17 +1,13 @@
 import angular from 'angular'
 import { PizzaListController } from './pizza-list.controller'
+import { pizzaToppingsFilter } from './pizza-toppings.filter'
 
-export default
+export const PizzaModule =
 
-  angular.module('dtang.pizza', [])
+angular.module('dtang.pizza', [])
+
     .controller('PizzaListController', PizzaListController)
-    .filter('bang', function () {
-      return function (input, nb = 1) {
-        let bang = ' '
-        for (var i = 0; i < nb; i++) {
-          bang = bang + '!'
-        }
-        return input + bang
-      }
-    })
+
+    .filter('pizzaToppings', pizzaToppingsFilter)
+
     .name
