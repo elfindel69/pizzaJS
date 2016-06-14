@@ -1,17 +1,17 @@
 <div ng-controller="PizzaListController as $ctrl">
 
+  <input ng-model="$ctrl.query" type="text" class="form-control">
   <table class="table">
     <thead>
       <tr>
         <th>NOM</th>
-        <th>PRIX</th>
         <th>INGREDIENTS</th>
+        <th>STATUT</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="pizza in $ctrl.pizzas track by $index">
+      <tr ng-repeat="pizza in $ctrl.pizzas | filter:$ctrl.keep() track by $index">
         <td>{{ pizza.name }}</td>
-        <td> {{10}} </td>
         <td> {{pizza | pizzaToppings}} </td>
         <td>
           <button ng-click="$ctrl.cookPizza(pizza)" ng-if="!pizza.status" class="btn">cook me</button>

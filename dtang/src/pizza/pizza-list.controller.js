@@ -9,8 +9,7 @@ export class PizzaListController {
       new Pizza({ name: 'Pizza 2', status: 0, toppings: [] }),
       new Pizza({ name: 'Pizza 3', status: 0, toppings: ['eggs', 'eggs', 'mushrooms'] }),
       new Pizza({ name: 'Pizza 4', status: 0 }),
-      new Pizza({ name: 'Pizza 5', status: 0 }),
-      { name: 'Pizza 5', status: 0, toppings: ['eggs'] }
+      new Pizza({ name: 'Pizza 5', status: 0 })
     ]
   }
 
@@ -31,6 +30,13 @@ export class PizzaListController {
     if (!pizza) return
     this.cookPizza(pizza)
       .then(this.cookPizzas.bind(this))
+  }
+  keep () {
+    return function (pizza) {
+      if (!this.query) return true
+      return pizza.name.indexOf(this.query) !== -1 ||
+      (pizza.toppings || []).join('').indexOf(this.query) !== -1
+    }.bind(this)
   }
 
 }

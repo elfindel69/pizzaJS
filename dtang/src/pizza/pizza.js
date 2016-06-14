@@ -1,10 +1,11 @@
 export class Pizza {
-  constructor ({name, toppings}) {
+  constructor ({name, toppings, status}) {
     this.name = name
     this.toppings = toppings
+    this.status = status
   }
 
-  toppings2string (pizza) {
+  toppings2string () {
     if (!this.toppings) return ''
     return this.toppings
 
