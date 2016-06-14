@@ -13,7 +13,11 @@ export class PizzaListController {
       new Pizza({ name: 'Pizza 3', status: 0, toppings: ['eggs', 'eggs', 'mushrooms'] }),
       new Pizza({ name: 'Pizza 4', status: 1 }),
       new Pizza({ name: 'Pizza 5', status: 0 })
-    ]
+    ].map(pizza => {
+      pizza._toppings = pizza.toppings2string()
+      pizza._toppingsLength = (pizza.toppings || []).length
+      return pizza
+    })
   }
 
   addPizza () {
@@ -39,19 +43,6 @@ export class PizzaListController {
       if (!this.query) return true
       return pizza.name.indexOf(this.query) !== -1 ||
       (pizza.toppings || []).join('').indexOf(this.query) !== -1
-    }.bind(this)
-  }
-
-
-  sortPizzas () {
-    return function (pizza) {
-      if (this.predicate === 'name' || this.predicate === 'status') {
-        return pizza[this.predicate]
-      }
-      if (this.predicate === 'toppings') {
-        return (pizza.toppings || []).length
-      }
-      return 1
     }.bind(this)
   }
 }
