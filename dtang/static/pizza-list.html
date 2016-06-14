@@ -4,13 +4,13 @@
   <table class="table">
     <thead>
       <tr>
-        <th>NOM</th>
-        <th>INGREDIENTS</th>
-        <th>STATUT</th>
+        <th>NOM <a class ="glyphicon glyphicon-sort-by-alphabet" ng-click="$ctrl.predicate = 'name'; reverse= !reverse"></a></th>
+        <th>INGREDIENTS <a class ="glyphicon glyphicon-sort-by-order" ng-click="$ctrl.predicate = 'toppings'; reverse= !reverse"></a></th>
+        <th>STATUT <a class ="glyphicon glyphicon-sort-by-attributes" ng-click="$ctrl.predicate = 'status'; reverse= !reverse"></a></th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="pizza in $ctrl.pizzas | filter:$ctrl.keep() track by $index">
+      <tr ng-repeat="pizza in $ctrl.pizzas | orderBy:$ctrl.predicate:reverse |  filter:$ctrl.keep() track by $index">
         <td>{{ pizza.name }}</td>
         <td> {{pizza | pizzaToppings}} </td>
         <td>
@@ -25,7 +25,7 @@
     Nouvelle Pizza
   </button>
   
-<button ng-click="$ctrl.cookAllPizzas()" class="btn btn-primary">
+<button ng-click="$ctrl.cookPizzas()" class="btn btn-primary">
     Cuire les pizza
   </button>
 </div>

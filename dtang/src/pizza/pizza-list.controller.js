@@ -4,6 +4,9 @@ export class PizzaListController {
   constructor ($timeout) {
     this.$timeout = $timeout
 
+    // tri par défaut
+    this.predicate = 'name'
+
     this.pizzas = [
       new Pizza({ name: 'Pizza 1', status: 0, toppings: ['eggs', 'mushrooms'] }),
       new Pizza({ name: 'Pizza 2', status: 0, toppings: [] }),
@@ -14,9 +17,9 @@ export class PizzaListController {
   }
 
   addPizza () {
-    this.pizzas.push({
+    this.pizzas.push(new Pizza({
       name: 'new pizza'
-    })
+    }))
   }
 
   cookPizza (pizza) {
