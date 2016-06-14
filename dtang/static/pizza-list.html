@@ -4,11 +4,13 @@
     <thead>
       <tr>
         <th>NOM</th>
+        <th>PRIX</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="pizza in $ctrl.pizzas track by $index">
-        <td>{{ pizza.name }}</td>
+        <td>{{ pizza.name | bang:3 }}</td>
+        <td> {{10}} </td>
         <td>
           <button ng-click="$ctrl.cookPizza(pizza)" ng-if="!pizza.status" class="btn">cook me</button>
           <span ng-if="pizza.status">CUITE</span>

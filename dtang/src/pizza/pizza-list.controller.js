@@ -23,7 +23,6 @@ export class PizzaListController {
     }, 3000)
   }
 
-
   cookAllPizzas () {
     const pizza = this.pizzas.find(p => p.status === 0)
     if (!pizza) return
