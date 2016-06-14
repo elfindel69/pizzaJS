@@ -21,11 +21,17 @@ input.ng-dirty {
   }
 </style>
 <div ng-controller="PizzaController as $ctrl">
-<form name="pizzaForm"
+<ng-form name="pizzaForm"
     ng-submit="$ctrl.savePizza(pizzaForm)"
     novalidate>
   <div class="form-group"> <label for="name">Nom :</label>
-    <input  ng-model="$ctrl.pizza.name" name="name" type="text" id="name" required >
+    <input
+      required
+      ng-model="$ctrl.pizza.name"
+      ng-model-options="{ updateOn : 'blur' }"
+      name="name"
+      type="text"
+      id="name">
     <p class="text-danger" ng-if="pizzaForm.name.$invalid && pizzaForm.name.$touched">Nom obligatoire</p>
   </div>
    
@@ -42,5 +48,5 @@ input.ng-dirty {
 
     <pre>{{ $ctrl.pizza | json }}</pre>
 
-  </form>
+  </ng-form>
 </div>
