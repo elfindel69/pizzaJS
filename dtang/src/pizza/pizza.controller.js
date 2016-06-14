@@ -1,4 +1,4 @@
-import { Pizza } from './pizza'
+// import { Pizza } from './pizza'
 import { toppings } from './toppings'
 
 export class PizzaController {
@@ -23,7 +23,6 @@ export class PizzaController {
       if (v) acc.push(keys[i])
       return acc
     }, [])
-
 
     console.log('save', this.pizza.toppings)
   }
