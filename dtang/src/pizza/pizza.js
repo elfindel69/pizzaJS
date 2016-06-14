@@ -23,4 +23,16 @@ export class Pizza {
       })
       .join(', ')
   }
+
+  addTopping (topping) {
+    // only authorized toppings
+   // if (Object.keys(authorizedToppings).indexOf(topping) === -1) return this
+
+    // 2 identical toppings max
+    if (this.toppings.filter(t => t === topping).length > 1) return this
+
+    this.toppings.push(topping)
+
+    return this
+  }
 }
