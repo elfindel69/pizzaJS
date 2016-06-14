@@ -9,9 +9,9 @@ export class PizzaListController {
 
     this.pizzas = [
       new Pizza({ name: 'Pizza 1', status: 0, toppings: ['eggs', 'mushrooms'] }),
-      new Pizza({ name: 'Pizza 2', status: 0, toppings: [] }),
+      new Pizza({ name: 'Pizza 2', status: 1, toppings: [] }),
       new Pizza({ name: 'Pizza 3', status: 0, toppings: ['eggs', 'eggs', 'mushrooms'] }),
-      new Pizza({ name: 'Pizza 4', status: 0 }),
+      new Pizza({ name: 'Pizza 4', status: 1 }),
       new Pizza({ name: 'Pizza 5', status: 0 })
     ]
   }
@@ -42,4 +42,16 @@ export class PizzaListController {
     }.bind(this)
   }
 
+
+  sortPizzas () {
+    return function (pizza) {
+      if (this.predicate === 'name' || this.predicate === 'status') {
+        return pizza[this.predicate]
+      }
+      if (this.predicate === 'toppings') {
+        return (pizza.toppings || []).length
+      }
+      return 1
+    }.bind(this)
+  }
 }
