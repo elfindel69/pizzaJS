@@ -1,0 +1,77 @@
+{
+  "pizzas": [
+    {
+      "id": 1,
+      "name": "test",
+      "toppings": [
+        "eggs",
+        "mushrooms"
+      ],
+      "status": 0,
+      "_toppings": "eggs, mushrooms",
+      "_toppingsLength": 2
+    },
+    {
+      "id": 2,
+      "name": "dee",
+      "status": 0,
+      "toppings": []
+    },
+    {
+      "id": 3,
+      "name": "trois",
+      "status": 1,
+      "toppings": [
+        "eggs",
+        "eggs",
+        "mushrooms"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "cinq",
+      "status": 1
+    },
+    {
+      "id": 6,
+      "name": "test2",
+      "toppings": [
+        "eggs"
+      ],
+      "status": 0,
+      "_toppings": "eggs",
+      "_toppingsLength": 1
+    },
+    {
+      "name": "new pizza",
+      "toppings": [
+        "eggs"
+      ],
+      "status": 0,
+      "id": 7
+    },
+    {
+      "id": 8,
+      "name": "edede",
+      "toppings": [
+        "eggs"
+      ],
+      "status": 0
+    }
+  ],
+  "toppings": {
+    "tomato sauce": { "fr": "Tomate" },
+    "mozzarella": {},
+    "mushrooms": { "fr": "Champignons" },
+    "ham": {},
+    "eggs": {},
+    "artichoke": {},
+    "green olives": {},
+    "onion": {},
+    "sweet corn": {},
+    "green peppers": {},
+    "black olives": {},
+    "peas": {},
+    "salami": {}
+  }
+}

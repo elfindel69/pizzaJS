@@ -1,0 +1,42 @@
+<style>
+  input.ng-invalid.ng-touched {
+    border: 1px solid indianred;
+    border-radius: 3px
+  }
+   input.ng-pristine{
+    border: 1px solid cyan;
+    border-radius: 3px
+  }
+input.ng-dirty {
+    border: 1px solid lightskyblue;
+    border-radius: 3px
+  }
+  input.ng-valid {
+    border: 1px solid lightgreen;
+    border-radius: 3px
+  }
+
+  label{
+    display: block
+  }
+</style>
+
+<h3>Édition pizza</h3>
+<form name="pizzaForm"
+ng-submit="$ctrl.updatePizza(pizzaForm)"
+novalidate>
+  <div class="form-group"> <label for="name">Nom :</label>
+    <input
+    required
+    ng-model="$ctrl.pizza.name"
+    ng-model-options="{ updateOn : 'blur' }"
+    name="name"
+    type="text"
+    id="name"
+    value="{{$ctrl.pizza.name}}">
+    <p class="text-danger" ng-if="pizzaForm.name.$invalid && pizzaForm.name.$touched">Nom obligatoire</p>
+  </div>
+  <button type="submit">Enregistrer</button>
+   <a ng-href="#/" type="button" class="btn">Annuler</a>
+  <pre>{{ $ctrl.toppings | json }}</pre>
+</form>
