@@ -14,7 +14,10 @@ export class PizzaService {
     .then(response => {
       return response.data
     })
-    .then(pizzas => pizzas.map(pizzaJson => new Pizza(pizzaJson)))
+    .then(pizzas => {
+      this.pizzas = pizzas.map(pizzaJson => new Pizza(pizzaJson))
+      return this.pizzas
+    })
   }
 
   addPizza (pizza) {
