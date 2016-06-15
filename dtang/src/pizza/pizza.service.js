@@ -44,6 +44,15 @@ export class PizzaService {
   updatePizza (pizza) {
     return this.$http.put(url + '/' + pizza.id, pizza)
   }
+
+  getToppings () {
+    return this.$http.get('http://localhost:1337/toppings')
+      .then(response => response.data)
+  }
+
 }
+
+
+
 
 PizzaService.$inject = ['$timeout', '$http']

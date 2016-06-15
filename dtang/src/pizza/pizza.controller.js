@@ -16,7 +16,11 @@ export class PizzaController {
         toppings: []
       }
     }
-    this.toppings = toppings
+
+    PizzaService.getToppings()
+      .then(toppings => {
+        this.toppings = toppings
+      })
   }
 
   savePizza (form) {

@@ -13,7 +13,7 @@
     },
     {
       "id": 2,
-      "name": "dzdz",
+      "name": "dee",
       "status": 0,
       "toppings": []
     },
@@ -58,5 +58,20 @@
       ],
       "status": 0
     }
-  ]
+  ],
+  "toppings": {
+    "tomato sauce": { "fr": "Tomate" },
+    "mozzarella": {},
+    "mushrooms": { "fr": "Champignons" },
+    "ham": {},
+    "eggs": {},
+    "artichoke": {},
+    "green olives": {},
+    "onion": {},
+    "sweet corn": {},
+    "green peppers": {},
+    "black olives": {},
+    "peas": {},
+    "salami": {}
+  }
 }

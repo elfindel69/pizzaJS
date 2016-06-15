@@ -6,7 +6,7 @@ export class PizzaListController {
     this.PizzaService = PizzaService
     // tri par défaut
     this.predicate = 'name'
-    this.hideTab = false
+
     PizzaService.getPizzas()
       .then(pizzas => {
         this.pizzas = this.initPizzas(pizzas)
