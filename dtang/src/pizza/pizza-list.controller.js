@@ -2,6 +2,7 @@ import { Pizza } from './pizza'
 
 export class PizzaListController {
   constructor ($timeout, PizzaService) {
+
     this.$timeout = $timeout
     this.PizzaService = PizzaService
     // tri par défaut
@@ -9,19 +10,32 @@ export class PizzaListController {
 
     PizzaService.getPizzas()
       .then(pizzas => {
-        this.pizzas = pizzas
-          .map(pizza => {
-            pizza._toppings = pizza.toppings2string()
-            pizza._toppingsLength = (pizza.toppings || []).length
-            return pizza
-          })
+        this.pizzas = this.initPizzas(pizzas)
+      }).catch(err => {
+        window.alert('Liste non trouvée', err)
+      })
+  }
+
+  initPizzas (pizzas) {
+    return pizzas
+      .map(pizza => {
+        pizza._toppings = pizza.toppings2string()
+        pizza._toppingsLength = (pizza.toppings || []).length
+        return pizza
       })
   }
 
   addPizza () {
-    this.PizzaService.addPizza(new Pizza({
-      name: 'new pizza'
-    })).then(pizzas => { this.pizzas = pizzas })
+    const pizza = new Pizza({
+      name: 'new pizza',
+      toppings: ['eggs']
+    })
+    this.PizzaService.addPizza(pizza)
+      .then((pizzas) => {
+        this.pizzas = this.initPizzas(pizzas)
+      }).catch(err => {
+        window.alert('Pb lors de l\'ajout de la pizza', err)
+      })
   }
 
   cookPizza (pizza) {

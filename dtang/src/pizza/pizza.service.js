@@ -1,28 +1,28 @@
 import { Pizza } from './pizza'
 
-const pizzas = [
-  new Pizza({ name: 'Pizza 1', status: 0, toppings: ['eggs', 'mushrooms'] }),
-  new Pizza({ name: 'Pizza 2', status: 1, toppings: [] }),
-  new Pizza({ name: 'Pizza 3', status: 0, toppings: ['eggs', 'eggs', 'mushrooms'] }),
-  new Pizza({ name: 'Pizza 4', status: 1 }),
-  new Pizza({ name: 'Pizza 5', status: 0 })
-]
-
 export class PizzaService {
-  constructor ($timeout) {
+  constructor ($timeout, $http) {
     this.$timeout = $timeout
+    this.$http = $http
   }
 
   getPizzas () {
-    return this.$timeout(2000).then(() => pizzas)
+    return this.$http({
+      url: 'http://192.168.99.2:1337/pizzas',
+      method: 'GET'
+    })
+    .then(response => {
+      return response.data
+    })
+    .then(pizzas => pizzas.map(pizzaJson => new Pizza(pizzaJson)))
   }
 
   addPizza (pizza) {
-    return this.$timeout(2000).then(() => {
-      pizzas.push(pizza)
-      return pizzas
+    return this.$timeout(1000).then(() => {
+      this.pizzas.push(pizza)
+      return this.pizzas
     })
   }
 }
 
-PizzaService.$inject = ['$timeout']
+PizzaService.$inject = ['$timeout', '$http']
