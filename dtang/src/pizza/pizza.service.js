@@ -41,7 +41,6 @@ export class PizzaService {
       .then(response => response.data)
   }
 
-
   updatePizza (pizza) {
     return this.$http.put(url + '/' + pizza.id, pizza)
   }
