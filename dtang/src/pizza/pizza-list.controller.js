@@ -6,7 +6,7 @@ export class PizzaListController {
     this.PizzaService = PizzaService
     // tri par défaut
     this.predicate = 'name'
-
+    this.hideTab = false
     PizzaService.getPizzas()
       .then(pizzas => {
         this.pizzas = this.initPizzas(pizzas)
@@ -41,6 +41,39 @@ export class PizzaListController {
     return this.$timeout(() => {
       pizza.status = 1
     }, 3000)
+  }
+
+  deletePizza (id) {
+    console.log(id)
+    this.PizzaService.deletePizza(id)
+      .then((pizzas) => {
+        this.pizzas = this.initPizzas(pizzas)
+      }).catch(err => {
+        window.alert('Pb lors de la suppression de la pizza', err)
+      })
+  }
+
+  updatePizza (pizzaForm) {
+    if (pizzaForm.$invalid) {
+      window.alert('ERROR !')
+      return
+    }
+    console.log(this.pizza)
+    this.PizzaService.updatePizza(this.pizza)
+      .then((pizzas) => {
+        this.pizzas = this.initPizzas(pizzas)
+        this.hideTab = false
+      }).catch(err => {
+        window.alert('Pb lors de la modification de la pizza', err)
+        this.hideTab = false
+      })
+  }
+
+  editPizza (pizza) {
+    this.hideTab = true
+    this.pizza = pizza
+    console.log(this.pizza.name)
+    return this.pizza
   }
 
   cookPizzas () {

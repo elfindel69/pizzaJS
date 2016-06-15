@@ -2,12 +2,14 @@
   "pizzas": [
     {
       "id": 1,
-      "name": "un",
-      "status": 0,
+      "name": "test",
       "toppings": [
         "eggs",
         "mushrooms"
-      ]
+      ],
+      "status": 0,
+      "_toppings": "eggs, mushrooms",
+      "_toppingsLength": 2
     },
     {
       "id": 2,
@@ -26,14 +28,37 @@
       ]
     },
     {
-      "id": 4,
-      "name": "quatre",
-      "status": 0
-    },
-    {
       "id": 5,
       "name": "cinq",
       "status": 1
+    },
+    {
+      "id": 6,
+      "name": "test2",
+      "toppings": [
+        "eggs"
+      ],
+      "status": 0,
+      "_toppings": "eggs",
+      "_toppingsLength": 1
+    },
+    {
+      "name": "new pizza",
+      "toppings": [
+        "eggs"
+      ],
+      "status": 0,
+      "id": 7
+    },
+    {
+      "id": 8,
+      "name": "test 3",
+      "toppings": [
+        "eggs"
+      ],
+      "status": 0,
+      "_toppings": "eggs",
+      "_toppingsLength": 1
     }
   ]
 }

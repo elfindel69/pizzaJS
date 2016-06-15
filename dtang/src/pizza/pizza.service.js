@@ -19,12 +19,30 @@ export class PizzaService {
       'http://localhost:1337/pizzas',
        pizza // ou pizza.json()
     )
-    .then(response => {
-      return response.data
-    })
-    .then(pizzaJson => {
+    .then(({data: pizzaJson}) => {
       pizza = new Pizza(pizzaJson)
       this.pizzas.push(pizza)
+      return this.pizzas
+    })
+  }
+
+  deletePizza (id) {
+    return this.$http.delete(
+      'http://localhost:1337/pizzas/' + id
+    )
+    .then(() => {
+      this.pizzas.splice(id, 1)
+      return this.pizzas
+    })
+  }
+
+  updatePizza (pizza) {
+    return this.$http.put(
+      'http://localhost:1337/pizzas/' + pizza.id,
+      pizza
+    )
+    .then(() => {
+      this.pizzas[pizza.id] = pizza
       return this.pizzas
     })
   }
