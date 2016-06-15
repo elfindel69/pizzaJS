@@ -13,7 +13,7 @@
     },
     {
       "id": 2,
-      "name": "deux",
+      "name": "dzdz",
       "status": 0,
       "toppings": []
     },
@@ -52,13 +52,11 @@
     },
     {
       "id": 8,
-      "name": "test 3",
+      "name": "edede",
       "toppings": [
         "eggs"
       ],
-      "status": 0,
-      "_toppings": "eggs",
-      "_toppingsLength": 1
+      "status": 0
     }
   ]
 }

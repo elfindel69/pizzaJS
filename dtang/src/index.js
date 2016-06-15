@@ -9,9 +9,20 @@ angular.module('dtang', [
   $routeProvider
 
   .when('/', {
-    template: '<h1>HOME</h1>',
-    controller: function () {}
+    templateUrl: 'pizza-list.html',
+    controller: 'PizzaListController',
+    controllerAs: '$ctrl'
   })
+  .when('/about', {
+    template: '<h1>ABOUT</h1>',
+    controller: function () {}
+  }).otherwise('/')
+.when('/pizza/:id', {
+  templateUrl: 'pizza-form.html',
+  controller: 'PizzaController',
+  controllerAs: '$ctrl'
+})
+.otherwise('/')
 })
 
 angular.bootstrap(document, ['dtang'])

@@ -1,11 +1,20 @@
-// import { Pizza } from './pizza'
 import { toppings } from './toppings'
 
 export class PizzaController {
-  constructor () {
-    this.pizza = {
-      name: 'Pizza',
-      toppings: []
+  constructor (PizzaService, $routeParams, $location) {
+    this.PizzaService = PizzaService
+    this.$location = $location
+    console.log($routeParams)
+    if ($routeParams.id) {
+      this.pizza = this.PizzaService.getPizza($routeParams.id)
+      .then((pizza) => {
+        this.pizza = pizza
+      })
+    } else {
+      this.pizza = {
+        name: 'Pizza',
+        toppings: []
+      }
     }
     this.toppings = toppings
   }
@@ -26,5 +35,17 @@ export class PizzaController {
 
     console.log('save', this.pizza.toppings)
   }
+
+  updatePizza (pizzaForm) {
+    if (pizzaForm.$invalid) {
+      window.alert('ERROR !')
+      return
+    }
+    this.PizzaService.updatePizza(this.pizza).then(() => {
+      this.$location.path('/')
+    })
+  }
 }
+
+PizzaController.$inject = ['PizzaService', '$routeParams', '$location']
 

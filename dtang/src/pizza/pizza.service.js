@@ -1,22 +1,22 @@
 import { Pizza } from './pizza'
 
+const url = 'http://localhost:1337/pizzas'
+
 export class PizzaService {
   constructor ($timeout, $http) {
     this.$timeout = $timeout
     this.$http = $http
+    this.getPizzas()
   }
 
   getPizzas () {
-    return this.$http.get('http://localhost:1337/pizzas')
-    .then(({data: pizzas}) => {
-      this.pizzas = pizzas.map(pizzaJson => new Pizza(pizzaJson))
-      return this.pizzas
-    })
+    return this.$http.get(url)
+    .then(({data: pizzas}) => pizzas.map(pizzaJson => new Pizza(pizzaJson)))
   }
 
   addPizza (pizza) {
     return this.$http.post(
-      'http://localhost:1337/pizzas',
+      url,
        pizza // ou pizza.json()
     )
     .then(({data: pizzaJson}) => {
@@ -28,7 +28,7 @@ export class PizzaService {
 
   deletePizza (id) {
     return this.$http.delete(
-      'http://localhost:1337/pizzas/' + id
+      url + '/' + id
     )
     .then(() => {
       this.pizzas.splice(id, 1)
@@ -36,15 +36,14 @@ export class PizzaService {
     })
   }
 
+  getPizza (id) {
+    return this.$http.get(url + '/' + id)
+      .then(response => response.data)
+  }
+
+
   updatePizza (pizza) {
-    return this.$http.put(
-      'http://localhost:1337/pizzas/' + pizza.id,
-      pizza
-    )
-    .then(() => {
-      this.pizzas[pizza.id] = pizza
-      return this.pizzas
-    })
+    return this.$http.put(url + '/' + pizza.id, pizza)
   }
 }
 

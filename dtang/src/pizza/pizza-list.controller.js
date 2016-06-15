@@ -53,22 +53,6 @@ export class PizzaListController {
       })
   }
 
-  updatePizza (pizzaForm) {
-    if (pizzaForm.$invalid) {
-      window.alert('ERROR !')
-      return
-    }
-    console.log(this.pizza)
-    this.PizzaService.updatePizza(this.pizza)
-      .then((pizzas) => {
-        this.pizzas = this.initPizzas(pizzas)
-        this.hideTab = false
-      }).catch(err => {
-        window.alert('Pb lors de la modification de la pizza', err)
-        this.hideTab = false
-      })
-  }
-
   editPizza (pizza) {
     this.hideTab = true
     this.pizza = pizza
