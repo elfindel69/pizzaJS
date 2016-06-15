@@ -20,7 +20,8 @@ export class PizzaService {
   addPizza (pizza) {
     return this.$http.post(
       'http://192.168.99.2:1337/pizzas',
-       pizza //ou pizza.json())
+       pizza // ou pizza.json()
+    )
     .then(response => {
       return response.data
     })

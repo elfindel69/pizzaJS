@@ -42,4 +42,5 @@ export class Pizza {
       toppings: this.toppings,
       status: this.status
     }
+  }
 }
