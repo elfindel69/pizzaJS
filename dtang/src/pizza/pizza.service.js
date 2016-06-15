@@ -1,6 +1,6 @@
 import { Pizza } from './pizza'
 
-var pizzas = [
+const pizzas = [
   new Pizza({ name: 'Pizza 1', status: 0, toppings: ['eggs', 'mushrooms'] }),
   new Pizza({ name: 'Pizza 2', status: 1, toppings: [] }),
   new Pizza({ name: 'Pizza 3', status: 0, toppings: ['eggs', 'eggs', 'mushrooms'] }),
