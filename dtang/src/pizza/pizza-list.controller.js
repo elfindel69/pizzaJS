@@ -1,23 +1,11 @@
 import { Pizza } from './pizza'
 
 export class PizzaListController {
-  constructor ($timeout) {
+  constructor ($timeout, PizzaService) {
     this.$timeout = $timeout
-
     // tri par défaut
     this.predicate = 'name'
-
-    this.pizzas = [
-      new Pizza({ name: 'Pizza 1', status: 0, toppings: ['eggs', 'mushrooms'] }),
-      new Pizza({ name: 'Pizza 2', status: 1, toppings: [] }),
-      new Pizza({ name: 'Pizza 3', status: 0, toppings: ['eggs', 'eggs', 'mushrooms'] }),
-      new Pizza({ name: 'Pizza 4', status: 1 }),
-      new Pizza({ name: 'Pizza 5', status: 0 })
-    ].map(pizza => {
-      pizza._toppings = pizza.toppings2string()
-      pizza._toppingsLength = (pizza.toppings || []).length
-      return pizza
-    })
+    this.pizzas = PizzaService.getPizzas()
   }
 
   addPizza () {
@@ -38,6 +26,7 @@ export class PizzaListController {
     this.cookPizza(pizza)
       .then(this.cookPizzas.bind(this))
   }
+
   keep () {
     return function (pizza) {
       if (!this.query) return true
@@ -47,4 +36,4 @@ export class PizzaListController {
   }
 }
 
-PizzaListController.$inject = ['$timeout']
+PizzaListController.$inject = ['$timeout', 'PizzaService']
