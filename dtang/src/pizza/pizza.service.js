@@ -12,8 +12,16 @@ export class PizzaService {
   constructor ($timeout) {
     this.$timeout = $timeout
   }
+
   getPizzas () {
     return this.$timeout(2000).then(() => pizzas)
+  }
+
+  addPizza (pizza) {
+    return this.$timeout(2000).then(() => {
+      pizzas.push(pizza)
+      return pizzas
+    })
   }
 }
 

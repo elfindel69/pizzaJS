@@ -3,6 +3,7 @@ import { Pizza } from './pizza'
 export class PizzaListController {
   constructor ($timeout, PizzaService) {
     this.$timeout = $timeout
+    this.PizzaService = PizzaService
     // tri par défaut
     this.predicate = 'name'
 
@@ -18,9 +19,9 @@ export class PizzaListController {
   }
 
   addPizza () {
-    this.pizzas.push(new Pizza({
+    this.PizzaService.addPizza(new Pizza({
       name: 'new pizza'
-    }))
+    })).then(pizzas => { this.pizzas = pizzas })
   }
 
   cookPizza (pizza) {
