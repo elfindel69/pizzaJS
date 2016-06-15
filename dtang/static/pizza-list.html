@@ -1,7 +1,10 @@
 <div ng-controller="PizzaListController as $ctrl">
-
+ 
   <input ng-model="$ctrl.query" type="text" class="form-control">
-  <table class="table">
+  <div style="text-align:center" ng-if="!$ctrl.pizzas">
+  <img src="images/pacman.gif">
+  </div>
+  <table class="table" ng-if="$ctrl.pizzas">
     <thead>
       <tr>
         <th>NOM <a class ="glyphicon glyphicon-sort-by-alphabet" ng-click="$ctrl.predicate = 'name'; reverse= !reverse"></th>

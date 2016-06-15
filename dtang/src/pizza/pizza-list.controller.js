@@ -5,7 +5,16 @@ export class PizzaListController {
     this.$timeout = $timeout
     // tri par défaut
     this.predicate = 'name'
-    this.pizzas = PizzaService.getPizzas()
+
+    PizzaService.getPizzas()
+      .then(pizzas => {
+        this.pizzas = pizzas
+          .map(pizza => {
+            pizza._toppings = pizza.toppings2string()
+            pizza._toppingsLength = (pizza.toppings || []).length
+            return pizza
+          })
+      })
   }
 
   addPizza () {
