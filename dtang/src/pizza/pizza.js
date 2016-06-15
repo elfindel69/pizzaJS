@@ -35,4 +35,11 @@ export class Pizza {
 
     return this
   }
+
+  json () {
+    return {
+      name: this.name,
+      toppings: this.toppings,
+      status: this.status
+    }
 }

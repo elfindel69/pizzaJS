@@ -7,10 +7,7 @@ export class PizzaService {
   }
 
   getPizzas () {
-    return this.$http({
-      url: 'http://192.168.99.2:1337/pizzas',
-      method: 'GET'
-    })
+    return this.$http.get('http://192.168.99.2:1337/pizzas')
     .then(response => {
       return response.data
     })
@@ -21,7 +18,14 @@ export class PizzaService {
   }
 
   addPizza (pizza) {
-    return this.$timeout(1000).then(() => {
+    return this.$http.post(
+      'http://192.168.99.2:1337/pizzas',
+       pizza //ou pizza.json())
+    .then(response => {
+      return response.data
+    })
+    .then(pizzaJson => {
+      pizza = new Pizza(pizzaJson)
       this.pizzas.push(pizza)
       return this.pizzas
     })
