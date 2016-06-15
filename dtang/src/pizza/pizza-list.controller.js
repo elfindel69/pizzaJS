@@ -2,7 +2,6 @@ import { Pizza } from './pizza'
 
 export class PizzaListController {
   constructor ($timeout, PizzaService) {
-
     this.$timeout = $timeout
     this.PizzaService = PizzaService
     // tri par défaut

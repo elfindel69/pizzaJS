@@ -1,0 +1,39 @@
+{
+  "pizzas": [
+    {
+      "id": 1,
+      "name": "un",
+      "status": 0,
+      "toppings": [
+        "eggs",
+        "mushrooms"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "deux",
+      "status": 0,
+      "toppings": []
+    },
+    {
+      "id": 3,
+      "name": "trois",
+      "status": 1,
+      "toppings": [
+        "eggs",
+        "eggs",
+        "mushrooms"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "quatre",
+      "status": 0
+    },
+    {
+      "id": 5,
+      "name": "cinq",
+      "status": 1
+    }
+  ]
+}

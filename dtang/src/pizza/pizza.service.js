@@ -7,11 +7,8 @@ export class PizzaService {
   }
 
   getPizzas () {
-    return this.$http.get('http://192.168.99.2:1337/pizzas')
-    .then(response => {
-      return response.data
-    })
-    .then(pizzas => {
+    return this.$http.get('http://localhost:1337/pizzas')
+    .then(({data: pizzas}) => {
       this.pizzas = pizzas.map(pizzaJson => new Pizza(pizzaJson))
       return this.pizzas
     })
@@ -19,7 +16,7 @@ export class PizzaService {
 
   addPizza (pizza) {
     return this.$http.post(
-      'http://192.168.99.2:1337/pizzas',
+      'http://localhost:1337/pizzas',
        pizza // ou pizza.json()
     )
     .then(response => {
