@@ -53,13 +53,6 @@ export class PizzaListController {
       })
   }
 
-  editPizza (pizza) {
-    this.hideTab = true
-    this.pizza = pizza
-    console.log(this.pizza.name)
-    return this.pizza
-  }
-
   cookPizzas () {
     const pizza = this.pizzas.find(p => p.status === 0)
     if (!pizza) return

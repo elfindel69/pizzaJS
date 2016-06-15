@@ -4,7 +4,7 @@ export class PizzaController {
   constructor (PizzaService, $routeParams, $location) {
     this.PizzaService = PizzaService
     this.$location = $location
-    console.log($routeParams)
+
     if ($routeParams.id) {
       this.pizza = this.PizzaService.getPizza($routeParams.id)
       .then((pizza) => {
