@@ -1,17 +1,17 @@
 <div class="row">
   <div class="col-md-6">
     <h4>toppings</h4>
-    <ul>
-      <li ng-repeat="topping in $ctrl.toppings track by $index">
+    <ul dta-drop="$ctrl.dropped()" class="list-group well">
+      <li class="list-group-item" ng-repeat="topping in $ctrl.toppings track by $index">
         <a ng-click="$ctrl.removeTopping($index)">{{topping}}</a>
       </li>
     </ul>
   </div>
   <div class="col-md-6">
     <h4>available toppings</h4>
-    <ul>
-      <li ng-repeat="(topping, value) in $ctrl.allToppings track by $index">
-        <a ng-click="$ctrl.addTopping(topping)">{{topping}}</a>
+    <ul class="list-group">
+      <li draggable dta-drag="$ctrl.draggedTopping = topping"  class="list-group-item sourceTopping" ng-repeat="(topping, value) in $ctrl.allToppings track by $index">
+        <a href ng-click="$ctrl.addTopping(topping)">{{topping}}</a>
       </li>
     </ul>
   </div>

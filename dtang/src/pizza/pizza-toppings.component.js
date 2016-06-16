@@ -12,6 +12,10 @@ class PizzaToppingsComponentController {
       $event: { id }
     })
   }
+
+  dropped () {
+    this.addTopping(this.draggedTopping)
+  }
 }
 
 export const PizzaToppingsComponent = {
