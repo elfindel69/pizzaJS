@@ -1,18 +1,18 @@
+
 class PizzaToppingsComponentController {
 
-  removeTopping (id) {
-    this.toppings.splice(id, 1)
-  }
-
   addTopping (topping) {
-    this.toppings.push(topping)
+    this.onAddTopping({
+      $event: { topping }
+    })
   }
 }
 
 export const PizzaToppingsComponent = {
   bindings: {
     toppings: '<',
-    allToppings: '<'
+    allToppings: '<',
+    onAddTopping: '&'
   },
   templateUrl: 'pizza-toppings.html',
   controller: PizzaToppingsComponentController

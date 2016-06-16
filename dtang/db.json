@@ -14,11 +14,14 @@
     {
       "id": 2,
       "name": "margherita",
-      "status": 0,
       "toppings": [
         "mozzarella",
-        "tomato sauce"
-      ]
+        "tomato sauce",
+        "tomato sauce",
+        "mozzarella",
+        "eggs"
+      ],
+      "status": 0
     },
     {
       "id": 3,
