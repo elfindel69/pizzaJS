@@ -13,9 +13,12 @@
     },
     {
       "id": 2,
-      "name": "dee",
+      "name": "margherita",
       "status": 0,
-      "toppings": []
+      "toppings": [
+        "mozzarella",
+        "tomato sauce"
+      ]
     },
     {
       "id": 3,
@@ -23,8 +26,9 @@
       "status": 1,
       "toppings": [
         "eggs",
-        "eggs",
-        "mushrooms"
+        "mushrooms",
+        "salami",
+        "mozzarella"
       ]
     },
     {
@@ -60,9 +64,13 @@
     }
   ],
   "toppings": {
-    "tomato sauce": { "fr": "Tomate" },
+    "tomato sauce": {
+      "fr": "Tomate"
+    },
     "mozzarella": {},
-    "mushrooms": { "fr": "Champignons" },
+    "mushrooms": {
+      "fr": "Champignons"
+    },
     "ham": {},
     "eggs": {},
     "artichoke": {},
