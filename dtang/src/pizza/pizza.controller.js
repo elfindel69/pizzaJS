@@ -28,8 +28,8 @@ export class PizzaController {
     this.pizza.addTopping(event.topping)
   }
 
-  removeTopping (id) {
-    this.pizza.removeTopping(id)
+  removeTopping (event) {
+    this.pizza.removeTopping(event.id)
   }
 
   savePizza (form) {
