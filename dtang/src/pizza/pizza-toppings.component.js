@@ -13,9 +13,11 @@ class PizzaToppingsComponentController {
     })
   }
 
-  dropped () {
+  droppedAdd () {
+    console.log(this.draggedTopping)
     this.addTopping(this.draggedTopping)
   }
+
 }
 
 export const PizzaToppingsComponent = {
