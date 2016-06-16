@@ -26,6 +26,12 @@ export class PizzaService {
     return this.$http.put(url + '/' + pizza.id, pizza)
   }
 
+  deletePizza (id) {
+    return this.$http.delete(url + '/' + id).then(response => {
+      return this.getPizzas()
+    })
+  }
+
   addPizza (pizza) {
     return this.$http.post(
       url,
