@@ -10,7 +10,7 @@
   <div class="col-md-6">
     <h4>available toppings</h4>
     <ul>
-      <li ng-repeat="topping in $ctrl.allToppings track by $index">
+      <li ng-repeat="(topping, value) in $ctrl.allToppings track by $index">
         <a ng-click="$ctrl.addTopping(topping)">{{topping}}</a>
       </li>
     </ul>

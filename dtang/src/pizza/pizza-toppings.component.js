@@ -1,9 +1,4 @@
 class PizzaToppingsComponentController {
-  $onChanges (changes) {
-    if (changes.allToppings && this.allToppings) {
-      this.allToppings = Object.keys(this.allToppings)
-    }
-  }
 
   removeTopping (id) {
     this.toppings.splice(id, 1)

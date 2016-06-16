@@ -37,7 +37,9 @@ novalidate>
     <p class="text-danger" ng-if="pizzaForm.name.$invalid && pizzaForm.name.$touched">Nom obligatoire</p>
   </div>
   <pizza-toppings toppings="$ctrl.pizza.toppings" all-toppings="$ctrl.toppings"></pizza-toppings>
- 
+ <pre>
+  {{$ctrl.pizza}}
+ </pre>
   <button type="submit">Enregistrer</button>
    <a ng-href="#/" type="button" class="btn">Annuler</a>
 </form>
