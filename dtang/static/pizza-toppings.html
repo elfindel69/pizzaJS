@@ -13,7 +13,7 @@
   <div class="col-md-6">
     <h4>available toppings</h4>
     <ul class="list-group">
-      <li draggable="true" dta-drag="$ctrl.draggedTopping = topping" class="list-group-item sourceTopping" ng-repeat="(topping, value) in $ctrl.allToppings track by $index">
+      <li dta-drag="$ctrl.draggedTopping = topping" class="list-group-item sourceTopping" ng-repeat="(topping, value) in $ctrl.allToppings track by $index">
         <a href ng-click="$ctrl.addTopping(topping)">{{topping}}</a>
       </li>
     </ul>
