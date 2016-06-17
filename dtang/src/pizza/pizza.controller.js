@@ -23,7 +23,6 @@ export class PizzaController {
       })
   }
 
-
   addTopping (event) {
     this.pizza.addTopping(event.topping)
   }
@@ -49,8 +48,8 @@ export class PizzaController {
     console.log('save', this.pizza.toppings)
   }
 
-  updatePizza (pizzaForm) {
-    if (pizzaForm.$invalid) {
+  updatePizza (event) {
+    if (event.pizzaForm.$invalid) {
       window.alert('ERROR !')
       return
     }

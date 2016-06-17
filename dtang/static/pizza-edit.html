@@ -1,0 +1,25 @@
+
+<h3>Édition pizza</h3>
+<form name="pizzaForm"
+ng-submit="$ctrl.updatePizza(pizzaForm)"
+novalidate>
+  <div class="form-group"> <label for="name">Nom :</label>
+    <input
+    required
+    ng-model="$ctrl.pizza.name"
+    ng-model-options="{ updateOn : 'blur' }"
+    name="name"
+    type="text"
+    id="name"
+    value="{{$ctrl.pizza.name}}">
+    <p class="text-danger" ng-if="pizzaForm.name.$invalid && pizzaForm.name.$touched">Nom obligatoire</p>
+  </div>
+  <pizza-toppings 
+    toppings="$ctrl.pizza.toppings"
+    all-toppings="$ctrl.toppings"
+    on-add-topping="$ctrl.addTopping($event)"
+    on-remove-topping="$ctrl.removeTopping($event)"
+  ></pizza-toppings>
+  <button type="submit">Enregistrer</button>
+   <a ng-href="#/" type="button" class="btn">Annuler</a>
+</form>
