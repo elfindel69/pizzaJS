@@ -1,4 +1,4 @@
-export function dtaDropDirective () {
+export function dtaDrop () {
   return {
     scope: {
       dtaDrop: '&'

@@ -6,12 +6,12 @@ export function dtaDragDirective () {
     },
     restrict: 'A',
     link: function (scope, element, attrs) {
-      element[0].setAttribute('draggable', true)
-      element[0].addEventListener('dragstart', evt => {
-        scope.$apply(function () {
-          scope.dtaDrag()
-        })
-      }, false)
+       // set draggable
+      element.attr('draggable', true)
+      // handle drag event
+      element.on('dragstart', evt => {
+        scope.dtaDrag()
+      })
     }
   }
 }
