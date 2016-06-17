@@ -18,7 +18,12 @@ angular.module('dtang', [
     controller: function () {}
   }).otherwise('/')
 .when('/pizza/:id', {
-  templateUrl: 'pizza-form.html',
+  templateUrl: 'pizza-form-edit.html',
+  controller: 'PizzaController',
+  controllerAs: '$ctrl'
+})
+.when('/pizza', {
+  templateUrl: 'pizza-form-new.html',
   controller: 'PizzaController',
   controllerAs: '$ctrl'
 })

@@ -1,17 +1,6 @@
 {
   "pizzas": [
     {
-      "id": 1,
-      "name": "test",
-      "toppings": [
-        "eggs",
-        "mushrooms"
-      ],
-      "status": 0,
-      "_toppings": "eggs, mushrooms",
-      "_toppingsLength": 2
-    },
-    {
       "id": 2,
       "name": "margherita",
       "toppings": [
@@ -45,12 +34,33 @@
       "status": 0
     },
     {
+      "id": 7,
       "name": "new pizza",
+      "toppings": [
+        "eggs",
+        "green olives",
+        "onion"
+      ],
+      "status": 0
+    },
+    {
+      "id": 8,
+      "name": "eggs",
       "toppings": [
         "eggs"
       ],
+      "status": 0
+    },
+    {
+      "name": "test 2",
+      "toppings": [
+        "mozzarella",
+        "tomato sauce",
+        "onion",
+        "artichoke"
+      ],
       "status": 0,
-      "id": 7
+      "id": 10
     }
   ],
   "toppings": {

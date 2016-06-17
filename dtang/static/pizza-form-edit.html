@@ -1,0 +1,29 @@
+<style>
+  input.ng-invalid.ng-touched {
+    border: 1px solid indianred;
+    border-radius: 3px
+  }
+   input.ng-pristine{
+    border: 1px solid cyan;
+    border-radius: 3px
+  }
+input.ng-dirty {
+    border: 1px solid lightskyblue;
+    border-radius: 3px
+  }
+  input.ng-valid {
+    border: 1px solid lightgreen;
+    border-radius: 3px
+  }
+
+  label{
+    display: block
+  }
+</style>
+
+<edit-pizza
+  pizza="$ctrl.pizza" 
+  toppings="$ctrl.toppings"
+  on-add-topping="$ctrl.addTopping($event)"
+  on-remove-topping="$ctrl.removeTopping($event)"
+  on-edit-pizza="$ctrl.updatePizza($event)"></edit-pizza>

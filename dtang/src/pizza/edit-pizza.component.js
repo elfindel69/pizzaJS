@@ -1,6 +1,13 @@
 
 class EditPizzaComponentController {
 
+  $onChanges (changes) {
+    if (changes.pizza && this.pizza.id) {
+      this.name = 'Edition Pizza'
+    } else {
+      this.name = 'Nouvelle Pizza'
+    }
+  }
   updatePizza (pizzaForm) {
     this.onEditPizza({
       $event: { pizzaForm }

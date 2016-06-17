@@ -21,8 +21,9 @@ input.ng-dirty {
   }
 </style>
 
-<edit-pizza pizza="$ctrl.pizza" 
+<edit-pizza
+  pizza="$ctrl.pizza" 
   toppings="$ctrl.toppings"
   on-add-topping="$ctrl.addTopping($event)"
   on-remove-topping="$ctrl.removeTopping($event)"
-  on-edit-pizza="$ctrl.updatePizza($event)"></edit-pizza>
+  on-edit-pizza="$ctrl.savePizza($event)"></edit-pizza>

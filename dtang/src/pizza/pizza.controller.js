@@ -1,5 +1,4 @@
-import { toppings } from './toppings'
-
+import { Pizza } from './pizza'
 export class PizzaController {
   constructor (PizzaService, $routeParams, $location) {
     this.PizzaService = PizzaService
@@ -11,10 +10,10 @@ export class PizzaController {
         this.pizza = pizza
       })
     } else {
-      this.pizza = {
+      this.pizza = new Pizza({
         name: 'Pizza',
         toppings: []
-      }
+      })
     }
 
     PizzaService.getToppings()
@@ -31,21 +30,15 @@ export class PizzaController {
     this.pizza.removeTopping(event.id)
   }
 
-  savePizza (form) {
-    if (form.$invalid) {
+  savePizza (event) {
+    if (event.pizzaForm.$invalid) {
       window.alert('ERROR !')
       return
     }
-    var keys = Object.keys(toppings)
-    console.log(keys)
-     // transformation toppings -> ['eggs', 'mushrooms']
-    this.pizza.toppings = this.pizza.toppings
-    .reduce((acc, v, i) => {
-      if (v) acc.push(keys[i])
-      return acc
-    }, [])
-
-    console.log('save', this.pizza.toppings)
+    this.PizzaService.addPizza(this.pizza).then(() => {
+      console
+      this.$location.path('/')
+    })
   }
 
   updatePizza (event) {
