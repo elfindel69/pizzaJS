@@ -12,12 +12,13 @@ export class Pizza {
 
       // uniqs
       .reduce((acc, topping) => {
-        if (acc.indexOf(topping) === -1) acc.push(topping)
+        if (acc.indexOf(topping) === -1 && topping) acc.push(topping)
         return acc
       }, [])
 
       // topping (translated (nb))
       .map(topping => {
+        if (!topping) return ''
         const size = this.toppings.filter(item => item === topping).length
         if (size > 1) return `${topping} x${size}`
         return `${topping}`
@@ -33,7 +34,6 @@ export class Pizza {
 
     return this
   }
-
 
   removeTopping (id) {
     this.toppings.splice(id, 1)

@@ -6,13 +6,16 @@ export class PizzaListController {
     this.PizzaService = PizzaService
     // tri par défaut
     this.predicate = 'name'
+    this.getPizzas()
+  }
 
-    PizzaService.getPizzas()
-      .then(pizzas => {
-        this.pizzas = this.initPizzas(pizzas)
-      }).catch(err => {
-        window.alert('Liste non trouvée', err)
-      })
+  getPizzas () {
+    return this.PizzaService.getPizzas()
+    .then(pizzas => {
+      this.pizzas = this.initPizzas(pizzas)
+    }).catch(err => {
+      window.alert('Liste non trouvée', err)
+    })
   }
 
   initPizzas (pizzas) {
