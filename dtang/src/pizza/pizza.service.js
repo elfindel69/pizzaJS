@@ -19,11 +19,17 @@ export class PizzaService {
 
   getPizza (id) {
     return this.$http.get(url + '/' + id)
-      .then(response => response.data)
+      .then(response => new Pizza(response.data))
   }
 
   updatePizza (pizza) {
     return this.$http.put(url + '/' + pizza.id, pizza)
+  }
+
+  deletePizza (id) {
+    return this.$http.delete(url + '/' + id).then(response => {
+      return this.getPizzas()
+    })
   }
 
   addPizza (pizza) {

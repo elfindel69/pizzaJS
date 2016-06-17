@@ -23,6 +23,15 @@ export class PizzaController {
       })
   }
 
+
+  addTopping (event) {
+    this.pizza.addTopping(event.topping)
+  }
+
+  removeTopping (event) {
+    this.pizza.removeTopping(event.id)
+  }
+
   savePizza (form) {
     if (form.$invalid) {
       window.alert('ERROR !')
