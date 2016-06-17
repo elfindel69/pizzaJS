@@ -4,9 +4,18 @@ export class Pizza {
     this.name = name
     this.toppings = toppings
     this.status = status
+    this.lang = 'en'
+  }
+
+  translate (topping) {
+    console.log(topping)
+    console.log(this.lang)
+    console.log(this.toppings[topping])
+    return this.toppings[topping][this.lang] || topping
   }
 
   toppings2string () {
+    console.log(this.lang)
     if (!this.toppings) return ''
     return this.toppings
 
@@ -20,7 +29,7 @@ export class Pizza {
       .map(topping => {
         if (!topping) return ''
         const size = this.toppings.filter(item => item === topping).length
-        if (size > 1) return `${topping} x${size}`
+        if (size > 1) return `${this.translate(topping)} x${size}`
         return `${topping}`
       })
       .join(', ')

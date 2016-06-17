@@ -20,7 +20,7 @@ export class PizzaListController {
   initPizzas (pizzas) {
     return pizzas
       .map(pizza => {
-        pizza._toppings = pizza.toppings2string()
+        pizza._toppings = pizza.toppings2string('en')
         pizza._toppingsLength = (pizza.toppings || []).length
         return pizza
       })

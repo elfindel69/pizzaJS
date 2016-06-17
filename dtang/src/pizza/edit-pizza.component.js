@@ -3,7 +3,7 @@ class EditPizzaComponentController {
 
   $onChanges (changes) {
     if (changes.pizza && this.pizza.id) {
-      this.name = 'Edition Pizza'
+      this.name = 'Édition Pizza'
     } else {
       this.name = 'Nouvelle Pizza'
     }
