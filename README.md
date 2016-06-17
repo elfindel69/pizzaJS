@@ -1,9 +1,9 @@
-## pizzeria-console-imperative
-Une application qui permet de manipuler une entité Pizza.
+## formation-dta
+Une application javascript qui permet de manipuler une entité Pizza.
 
 L'application est basée sur **ES 2015**.
 
-Les sources sont dans le répertoire [pizzeria-console-imperative](pizzeria-console-imperative)
+Les sources sont dans le répertoire [formation-dta](formation-dta)
 
 ## dtang
 
